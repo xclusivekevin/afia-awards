@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 const LINKS = [["About AFIA", "/about"], ["Winners Archive", "/winners"], ["Award Categories", "/award-categories"], ["Food Tour & Cultural Night", "https://festival.afrifoodnetwork.com/food-tour/"], ["Jury and Governance", "/governance"], ["Press and Media", "/press"], ["African Food Network", "https://afrifoodnetwork.com/"], ["Privacy Policy", "https://afrifoodnetwork.com/privacy"]];
-const SOCIAL = [["Instagram", "https://www.instagram.com/afrifoodnetwork/", "M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm5 5a4 4 0 100 8 4 4 0 000-8zm5-1a1 1 0 100 2 1 1 0 000-2z"], ["Facebook", "https://www.facebook.com/afrifoodnetwork", "M14 8h2V5h-2c-2.2 0-3.5 1.3-3.5 3.5V10H8v3h2.5v7h3v-7H16l.5-3h-3V8.8c0-.5.2-.8.5-.8z"], ["X (Twitter)", "https://x.com/afrifoodnetwork", "M4 4h4l4.5 6L17 4h3l-6.2 8L21 20h-4l-5-6.5L6.5 20H3.5l6.7-8.5L4 4z"], ["TikTok", "https://www.tiktok.com/@afrifoodnetwork", "M14 3h3a4 4 0 004 4v3a7 7 0 01-4-1.3V15a5.5 5.5 0 11-5.5-5.5v3a2.5 2.5 0 102.5 2.5V3z"]];
+const SOCIAL = [["Instagram", "https://instagram.com/afrifoodnet", "M7 3h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4zm5 5a4 4 0 100 8 4 4 0 000-8zm5-1a1 1 0 100 2 1 1 0 000-2z"], ["Facebook", "https://facebook.com/africanfoodnetwork", "M14 8h2V5h-2c-2.2 0-3.5 1.3-3.5 3.5V10H8v3h2.5v7h3v-7H16l.5-3h-3V8.8c0-.5.2-.8.5-.8z"], ["X (Twitter)", "https://x.com/afrifoodnet", "M4 4h4l4.5 6L17 4h3l-6.2 8L21 20h-4l-5-6.5L6.5 20H3.5l6.7-8.5L4 4z"], ["TikTok", "https://tiktok.com/@afrifoodnet", "M14 3h3a4 4 0 004 4v3a7 7 0 01-4-1.3V15a5.5 5.5 0 11-5.5-5.5v3a2.5 2.5 0 102.5 2.5V3z"]];
 export default function Footer() {
   return (
     <footer className="bg-white">
