@@ -1,0 +1,22 @@
+/* AFIA Design System v1.0 · tokens · 20 Sep 2026 */
+:root {
+  --afia-gold-500: #CC983D; --afia-gold-600: #BB7B23; --afia-gold-700: #9E6719;
+  --afia-brown-800: #49361C; --afia-peach-200: #FFBC7D;
+  --afia-black: #000000; --afia-ink-900: #0D0A06; --afia-grey-700: #54595F; --afia-grey-600: #7A7A7A; --afia-grey-300: #D9D9D9; --afia-white: #FFFFFF;
+
+  --color-bg: var(--afia-white); --color-bg-dark: var(--afia-black);
+  --color-heading: var(--afia-gold-500); --color-heading-on-dark: var(--afia-white); --color-heading-accent: var(--afia-gold-500);
+  --color-text: var(--afia-grey-700); --color-text-on-dark: rgba(255,255,255,0.85);
+  --color-action: var(--afia-gold-600); --color-action-hover: var(--afia-gold-700);
+  --color-card: rgba(73,54,28,0.85); --color-card-border: rgba(187,123,35,0.35); --color-link: var(--afia-gold-600);
+
+  --font-display: "Clash Display", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Roboto", system-ui, sans-serif;
+  --text-hero: clamp(36px, 6vw, 72px); --text-h1: clamp(32px, 4.5vw, 56px); --text-h2: clamp(26px, 3vw, 36px); --text-body: 16px; --text-button: 15px;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --section-y: 96px; --section-y-mobile: 64px; --container: 1200px;
+  --radius-pill: 999px; --radius-card: 16px; --radius-image: 12px; --radius-button: 4px; --radius-input: 4px;
+  --shadow-card-light: 0 10px 30px rgba(0,0,0,0.08);
+  --z-base: 0; --z-raised: 10; --z-nav: 50; --z-overlay: 100;
+}
