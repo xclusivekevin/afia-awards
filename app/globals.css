@@ -16,6 +16,10 @@
   @media (max-width: 767px) { .section { padding-block: var(--section-y-mobile); } }
   .dark { background: var(--color-bg-dark); color: var(--color-text-on-dark); }
   .dark h1, .dark h2, .dark h3 { color: #fff; }
+  /* gold on dark stays bright; only the on-white gold is darkened for contrast */
+  .dark .gold, .dark .text-\[color\:var\(--afia-gold-500\)\] { color: var(--afia-gold-500); }
+  .dark .btn--primary { background: var(--afia-gold-600); }
+  .dark .btn--primary:hover { background: var(--afia-gold-700); }
   .gold { color: var(--afia-gold-500); }
   .display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
   .eyebrow { display: inline-block; background: rgba(187,123,35,0.25); border: 1px solid var(--afia-gold-600); border-radius: var(--radius-pill); padding: 6px 18px; font-family: var(--font-display); font-weight: 500; font-size: 14px; color: #fff; line-height: 1.4; }
@@ -37,10 +41,18 @@
   .input { width: 100%; border: 1px solid var(--afia-grey-300); border-radius: var(--radius-input); padding: 12px 14px; font-family: var(--font-body); font-size: 15px; color: #111; background: #fff; }
   .input:focus { outline: none; border-color: var(--afia-gold-600); box-shadow: 0 0 0 3px rgba(187,123,35,0.2); }
   .label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: #111; }
-  .list-gold li { position: relative; padding-left: 24px; }
+  .list-gold li { position: relative; padding-left: 24px; max-width: 68ch; }
+  .list-gold a, footer a { display: inline-block; padding-block: 5px; }
   .list-gold li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 14px; height: 14px; border-radius: 50%; background: var(--afia-gold-600) no-repeat center / 6px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.6'%3E%3Cpath d='M3 1.5L6.5 5 3 8.5'/%3E%3C/svg%3E"); }
   .prose h2 { font-size: 24px; margin-top: 32px; }
   .prose h3 { font-size: 16px; margin-top: 24px; color: var(--afia-gold-600); }
-  .prose p, .prose ul { margin-top: 12px; }
+  .prose p, .prose ul { margin-top: 12px; max-width: 68ch; }
+  .measure { max-width: 68ch; }
   .prose ul { list-style: disc; padding-left: 20px; }
+
 }
+
+/* T-15: cap the measure. Unlayered on purpose so it beats Tailwind's max-w-* utilities.
+   Clash Display has a wide "0", so 58ch lands at roughly 70 real characters here. */
+main p, main li, main dd { max-width: 58ch; }
+main p.mx-auto, main li.mx-auto, main dd.mx-auto { margin-inline: auto; }

@@ -25,17 +25,17 @@ export default function Home() {
       <section className="section">
         <div className="container grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Image src="/img/About-AFIA-2026.png" alt="Speaker at the AFIA lectern" width={800} height={600} className="img-frame" />
-          <div><h2 className="text-[length:var(--text-h2)]">What is AFIA?</h2><p className="mt-5">The African Food Influencers Awards is Africa’s definitive recognition platform for excellence in food, culinary arts, and food industry leadership.</p><p className="mt-4">Organised annually, AFIA honours the individuals and brands making a measurable, lasting contribution to Africa’s food ecosystem — across culinary arts, entrepreneurship, media storytelling, and cultural preservation.</p><p className="mt-4">The awards are built on three principles that do not change: impact over popularity, independent jury, and zero pay-to-play.</p><h3 className="mt-6 text-[18px] text-[color:var(--afia-gold-600)]">AFIA 2026</h3><p className="mt-2">AFIA 2026 is convened by African Food Network in partnership with CAPA — Culinary Art Practitioners Association of Nigeria — as National Host and Chef Network Partner.</p></div>
+          <div><h2 className="text-[length:var(--text-h2)]">What is AFIA?</h2><p className="measure mt-5">The African Food Influencers Awards is Africa’s definitive recognition platform for excellence in food, culinary arts, and food industry leadership.</p><p className="mt-4">Organised annually, AFIA honours the individuals and brands making a measurable, lasting contribution to Africa’s food ecosystem — across culinary arts, entrepreneurship, media storytelling, and cultural preservation.</p><p className="mt-4">The awards are built on three principles that do not change: impact over popularity, independent jury, and zero pay-to-play.</p><h3 className="mt-6 text-[18px] text-[color:var(--afia-gold-600)]">AFIA 2026</h3><p className="mt-2">AFIA 2026 is convened by African Food Network in partnership with CAPA — Culinary Art Practitioners Association of Nigeria — as National Host and Chef Network Partner.</p></div>
         </div>
       </section>
 
       <section className="dark section relative text-center" style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url(/img/Active-2026-Hero.png)", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="container">
           <h2 className="display gold text-[22px] font-semibold md:text-[32px]">AFIA 2026 — The Awards</h2>
-          <p className="display mt-6 text-[36px] font-bold leading-[1.1] text-white md:text-[56px]">Honouring Excellence.<br />Building<br /><span className="gold">Africa&apos;s Food Future.</span></p>
+          <p className="display mt-6 text-[36px] font-bold leading-[1.1] text-white md:text-[56px]">Thirteen awards.<br />Four tracks.<br /><span className="gold">One independent jury.</span></p>
           <p className="display mt-6 text-[16px] text-white md:text-[22px]">Ceremony: November 2026 | In Partnership with CAPA</p>
-          <p className="lede mx-auto mt-4 max-w-3xl text-white/85">Thirteen awards across four tracks. Recognised by an independent jury. Nominated by the industry. Open to individuals and brands from across the African continent and the African diaspora.</p>
-          <div className="mt-10 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">{TRACKS.map(([k, t, d]) => <div key={k} className="card-dark"><TrackIcon k={k} /><h3 className="mt-6 text-[18px] text-white">{t}</h3><p className="mt-3 text-[14px] text-white/85">{d}</p></div>)}</div>
+          <p className="lede mx-auto mt-4 max-w-3xl text-white/85">Nominated by the industry, judged on impact rather than popularity. Open to individuals and brands from across the African continent and the African diaspora. Nomination is free, and winning cannot be bought.</p>
+          <div className="mt-10 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">{TRACKS.map(([k, t, d]) => <div key={k} className="card-dark"><TrackIcon k={k} /><h3 className="mt-6 flex min-h-[3rem] items-start text-[18px] leading-[1.25] text-white">{t}</h3><p className="mt-2 text-[14px] text-white/85">{d}</p></div>)}</div>
           <div className="mt-10"><Btn href="/award-categories">View All Categories</Btn></div>
         </div>
       </section>

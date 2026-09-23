@@ -1,14 +1,16 @@
 /* AFIA Design System v1.0 · tokens · 20 Sep 2026 */
 :root {
   --afia-gold-500: #CC983D; --afia-gold-600: #BB7B23; --afia-gold-700: #9E6719;
+  /* on-white gold: #CC983D is 2.6:1 and #BB7B23 is 3.6:1, both fail AA. 4.5:1. */
+  --afia-gold-ink: #A8792A;
   --afia-brown-800: #49361C; --afia-peach-200: #FFBC7D;
   --afia-black: #000000; --afia-ink-900: #0D0A06; --afia-grey-700: #54595F; --afia-grey-600: #7A7A7A; --afia-grey-300: #D9D9D9; --afia-white: #FFFFFF;
 
   --color-bg: var(--afia-white); --color-bg-dark: var(--afia-black);
-  --color-heading: var(--afia-gold-500); --color-heading-on-dark: var(--afia-white); --color-heading-accent: var(--afia-gold-500);
+  --color-heading: var(--afia-gold-ink); --color-heading-on-dark: var(--afia-white); --color-heading-accent: var(--afia-gold-500);
   --color-text: var(--afia-grey-700); --color-text-on-dark: rgba(255,255,255,0.85);
-  --color-action: var(--afia-gold-600); --color-action-hover: var(--afia-gold-700);
-  --color-card: rgba(73,54,28,0.85); --color-card-border: rgba(187,123,35,0.35); --color-link: var(--afia-gold-600);
+  --color-action: var(--afia-gold-ink); --color-action-hover: var(--afia-gold-700);
+  --color-card: rgba(73,54,28,0.85); --color-card-border: rgba(187,123,35,0.35); --color-link: var(--afia-gold-ink);
 
   --font-display: "Clash Display", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Roboto", system-ui, sans-serif;

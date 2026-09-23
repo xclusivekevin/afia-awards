@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "The African Food Influencers Awards recognises the individuals and brands shaping Africa's culinary identity, on the continent and across the world.",
   alternates: { canonical: "./" },
   icons: { icon: "/img/Awards-Favicon.png" },
-  openGraph: { type: "website", locale: "en_GB", url: "./", siteName: "African Food Influencers Awards", images: ["/img/Active-Hero-2026.png"] },
+  openGraph: { type: "website", locale: "en_GB", url: "./", siteName: "African Food Influencers Awards" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
