@@ -10,7 +10,7 @@ export default function Footer() {
         <div><h2 className="mb-4 text-[18px] normal-case tracking-normal text-black">Useful Links</h2><ul className="list-gold space-y-2 text-[15px]">{LINKS.map(([l, h]) => <li key={l}><Link href={h} className="hover:text-[color:var(--afia-gold-600)] hover:underline">{l}</Link></li>)}</ul></div>
         <div><h2 className="mb-4 text-[18px] normal-case tracking-normal text-black">Connect</h2><ul className="space-y-2 text-[15px]">{SOCIAL.map(([n, h, d]) => <li key={n}><a href={h} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-[color:var(--afia-gold-600)] hover:underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[color:var(--afia-gold-600)]"><path d={d} /></svg>{n}</a></li>)}<li><a href="mailto:awards@afrifoodnetwork.com" className="inline-flex items-center gap-2 hover:underline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="text-[color:var(--afia-gold-600)]"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg>awards@afrifoodnetwork.com</a></li></ul></div>
       </div>
-      <div className="bg-[color:var(--afia-gold-500)] py-4 text-center text-[13px] text-black">© 2026 African Food Network. All rights reserved. AFIA is an African Food Network initiative.</div>
+      <div className="sheen bg-[color:var(--afia-gold-500)] py-4 text-center text-[13px] text-black">© 2026 African Food Network. All rights reserved. AFIA is an African Food Network initiative.</div>
     </footer>
   );
 }

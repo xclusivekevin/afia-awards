@@ -11,6 +11,18 @@
 }
 
 @layer components {
+  /* B6 motion: a gold sheen on the footer band, and cards that fade up once as they arrive.
+     Everything here is disabled under prefers-reduced-motion. */
+  .sheen { position: relative; overflow: hidden; }
+  .sheen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.45) 50%, transparent 80%); transform: translateX(-100%); animation: sheen 6s ease-in-out 2s infinite; }
+  @keyframes sheen { 0% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
+  /* transform only: never animate opacity here, or anything that has not entered the
+     viewport stays invisible to screenshots, print and anything that does not scroll. */
+  .reveal { transform: translateY(14px); animation: reveal 620ms cubic-bezier(0.22,1,0.36,1) forwards; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @supports not (animation-timeline: view()) { .reveal { transform: none; animation: none; } }
+  @keyframes reveal { to { transform: none; } }
+  .card-dark { transition: border-color 260ms ease, transform 260ms ease; }
+  .card-dark:hover { border-color: rgba(187,123,35,0.7); transform: translateY(-3px); }
   .container { max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
   .section { padding-block: var(--section-y); }
   @media (max-width: 767px) { .section { padding-block: var(--section-y-mobile); } }
@@ -56,3 +68,14 @@
    Clash Display has a wide "0", so 58ch lands at roughly 70 real characters here. */
 main p, main li, main dd { max-width: 58ch; }
 main p.mx-auto, main li.mx-auto, main dd.mx-auto { margin-inline: auto; }
+/* the cap shrinks the box, so centred containers keep their paragraphs centred */
+main .text-center p, main .text-center li, main .text-center dd, main .text-center blockquote { margin-inline: auto; }
+
+
+/* B6: honour the user's motion setting. Not optional. */
+@media (prefers-reduced-motion: reduce) {
+  .sheen::after { animation: none; display: none; }
+  .reveal { transform: none; animation: none; }
+  .card-dark:hover { transform: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
