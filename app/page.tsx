@@ -26,7 +26,7 @@ export default function Home() {
       <section className="dark relative flex min-h-[720px] items-center pt-[88px] text-center" style={{ backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url(/img/Active-Hero-2026.png)", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="container py-20">
           <Eyebrow>{AFIA.phaseLine} · {TOTAL_NOMINEES} nominees</Eyebrow>
-          <h1 className="mx-auto mt-6 max-w-5xl text-[length:var(--text-hero)]">Honouring Excellence.<br />Building <span className="gold">Africa&apos;s Food Future.</span></h1>
+          <h1 className="mx-auto mt-6 max-w-5xl text-balance text-[length:var(--text-hero)]">Honouring Excellence.<br />Building<br /><span className="gold">Africa&apos;s Food Future.</span></h1>
           <p className="display mt-6 text-[16px] font-medium text-white md:text-[24px]">{AFIA.dateLong} · {AFIA.time} · Online</p>
           <p className="lede mx-auto mt-4 max-w-2xl text-white/85">The second edition of the African Food Influencers Awards. {TOTAL_NOMINEES} nominees from {TOTAL_COUNTRIES} countries, {AFIA.awards} awards, decided by an independent jury.</p>
           <Countdown to={AFIA.startISO} passed="The AFIA 2026 winners are in." />
@@ -37,7 +37,7 @@ export default function Home() {
       {/* ── The slate, in numbers, straight under the hero ──────────────── */}
       <section className="dark border-y border-[color:var(--color-card-border)] py-10">
         <div className="container grid grid-cols-2 gap-8 text-center md:grid-cols-4">
-          {([[String(TOTAL_NOMINEES), "Nominees"], [String(AFIA.awards), "Awards"], [String(TOTAL_COUNTRIES), "Countries"], ["0", "Cost to enter or win"]] as [string, string][]).map(([v, l]) => (
+          {([[String(TOTAL_NOMINEES), "Nominees"], [String(AFIA.awards), "Awards"], [String(TOTAL_COUNTRIES), "Countries represented"], [String(AFIA.tracks), "Tracks"]] as [string, string][]).map(([v, l]) => (
             <div key={l}>
               <p className="display text-[36px] font-semibold leading-none text-[color:var(--afia-gold-500)] md:text-[44px]">{v}</p>
               <p className="display mt-2 text-[12px] uppercase tracking-[0.1em] text-white/60">{l}</p>

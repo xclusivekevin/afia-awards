@@ -14,7 +14,7 @@ export default function About() {
           <h2>What AFIA Recognises</h2><p>AFIA covers the full breadth of Africa’s food ecosystem. Fourteen awards are presented annually across four tracks: Culinary Excellence, Media and Influence, Brands and Innovation, and Future and Legacy. Nominees may come from anywhere on the African continent or from the African diaspora.</p>
           <h2>Why It Matters</h2><p>Less than 15 percent of African foods have their recipes documented online. Africa’s food culture is among the richest and most diverse in the world, and it has been consistently underrepresented in global industry recognition. AFIA exists to correct that. Every edition builds a growing archive of the individuals and brands shaping Africa’s food narrative, locally and globally.</p>
           <h2>Founding Context</h2><p>AFIA was inaugurated in 2025 as an initiative of African Food Network; Africa’s pan-African food media, events, and ecosystem platform, founded in 2019 and recognised with two consecutive World Culinary Awards for Africa’s Best Culinary Festival in 2024 and 2025.</p>
-          <h2>The 2026 Edition</h2><p>The second edition presents fourteen awards and is decided by an independent jury, with no public vote. Sixty-six nominees from twenty-eight countries were announced on 12 November 2026, and the winners are read out online on Saturday 12 December 2026.</p>
+          <h2>The 2026 Edition</h2><p>The second edition presents fourteen awards and is decided by an independent jury, with no public vote. Sixty-six nominees from twenty countries were announced on 12 November 2026, and the winners are read out online on Saturday 12 December 2026.</p>
         </div>
       </div></section>
     </>

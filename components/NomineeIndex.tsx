@@ -53,7 +53,7 @@ export default function NomineeIndex() {
       {/* ── the index rail ─────────────────────────────────────────────── */}
       <nav aria-label="Award categories" className="lg:sticky lg:top-[104px] lg:self-start">
         <p className="display text-[12px] uppercase tracking-[0.14em] text-[color:var(--afia-gold-500)]">The fourteen awards</p>
-        <ol ref={railRef} className="mt-4 max-h-[60vh] overflow-y-auto lg:max-h-[66vh]">
+        <ol ref={railRef} className="mt-4 lg:max-h-[66vh] lg:overflow-y-auto">
           {CATEGORIES_2026.map((c) => {
             const id = slug(c.name);
             const on = active === id;
@@ -94,11 +94,11 @@ export default function NomineeIndex() {
               </p>
 
               <ul className="mt-6">
-                {c.nominees.map((nm, i) => (
+                {c.nominees.map((nm) => (
                   <li key={nm.name} className="nominee-row reveal">
                     <Portrait name={nm.name} photo={nm.photo} brand={nm.brand} size={64} />
                     <div className="min-w-0 flex-1">
-                      <h3 className={`text-[19px] leading-tight text-white md:text-[22px] ${i % 2 === 0 ? "font-semibold" : "font-normal"}`}>
+                      <h3 className="text-[19px] font-semibold leading-tight text-white md:text-[22px]">
                         {nm.name}
                       </h3>
                       <p className="mt-1.5 max-w-[62ch] text-[14px] leading-relaxed text-white/70">{nm.bio}</p>

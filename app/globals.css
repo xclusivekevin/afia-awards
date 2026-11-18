@@ -71,6 +71,12 @@ main p.mx-auto, main li.mx-auto, main dd.mx-auto { margin-inline: auto; }
 /* The 58ch cap above is for reading columns. A ruled, full-width row is not one: it spans
    the grid and caps its own paragraph instead, so it opts out. Unlayered, like the cap. */
 main li.nominee-row, main li.ruled-row, main nav li { max-width: none; }
+/* and the text inside those rows. The row was freed but its own <p> was still
+   caught by `main p`, which left a dead gutter on all 66 nominee rows. Setting
+   `none` here overshot the other way, to about 89 characters, so the reading
+   width is stated outright instead. */
+main li.nominee-row p { max-width: 62ch; }
+main li.ruled-row p, main nav li p { max-width: none; }
 /* the cap shrinks the box, so centred containers keep their paragraphs centred */
 main .text-center p, main .text-center li, main .text-center dd, main .text-center blockquote { margin-inline: auto; }
 
