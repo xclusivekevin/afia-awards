@@ -30,20 +30,20 @@
   .dark h1, .dark h2, .dark h3 { color: #fff; }
   /* gold on dark stays bright; only the on-white gold is darkened for contrast */
   .dark .gold, .dark .text-\[color\:var\(--afia-gold-500\)\] { color: var(--afia-gold-500); }
-  .dark .btn--primary { background: var(--afia-gold-600); }
-  .dark .btn--primary:hover { background: var(--afia-gold-700); }
+  .dark .btn--primary { background: var(--afia-gold-700); }
+  .dark .btn--primary:hover { background: var(--afia-gold-800); }
   .gold { color: var(--afia-gold-500); }
   .display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
   .eyebrow { display: inline-block; background: rgba(187,123,35,0.25); border: 1px solid var(--afia-gold-600); border-radius: var(--radius-pill); padding: 6px 18px; font-family: var(--font-display); font-weight: 500; font-size: 14px; color: #fff; line-height: 1.4; }
-  .eyebrow--light { background: rgba(187,123,35,0.1); color: var(--afia-gold-600); }
+  .eyebrow--light { background: rgba(187,123,35,0.1); color: var(--afia-gold-ink); }
   .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 500; font-size: var(--text-button); text-transform: uppercase; letter-spacing: 0.02em; padding: 14px 28px; border-radius: var(--radius-button); line-height: 1; text-decoration: none; cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
   .btn::after { content: ""; width: 18px; height: 18px; border: 1.5px solid currentColor; border-radius: 50%; background: no-repeat center / 9px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.4'%3E%3Cpath d='M1 5h8M5.5 1.5L9 5l-3.5 3.5'/%3E%3C/svg%3E"); }
   .btn--primary { background: var(--color-action); color: #fff; }
   .btn--primary:hover { background: var(--color-action-hover); }
   .btn--outline { background: transparent; color: #fff; border: 1px solid var(--afia-gold-600); }
   .btn--outline:hover { background: rgba(187,123,35,0.12); }
-  .btn--outline-light { background: transparent; color: var(--afia-gold-600); border: 1px solid var(--afia-gold-600); }
-  .btn--outline-light::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23BB7B23' stroke-width='1.4'%3E%3Cpath d='M1 5h8M5.5 1.5L9 5l-3.5 3.5'/%3E%3C/svg%3E"); }
+  .btn--outline-light { background: transparent; color: var(--afia-gold-ink); border: 1px solid var(--afia-gold-ink); }
+  .btn--outline-light::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23996E26' stroke-width='1.4'%3E%3Cpath d='M1 5h8M5.5 1.5L9 5l-3.5 3.5'/%3E%3C/svg%3E"); }
   .btn--outline-light:hover { background: rgba(187,123,35,0.08); }
   .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   .card-dark { background: var(--color-card); border: 1px solid var(--color-card-border); border-radius: var(--radius-card); padding: 32px 24px; }
@@ -57,7 +57,7 @@
   .list-gold a, footer a { display: inline-block; padding-block: 5px; }
   .list-gold li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 14px; height: 14px; border-radius: 50%; background: var(--afia-gold-600) no-repeat center / 6px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.6'%3E%3Cpath d='M3 1.5L6.5 5 3 8.5'/%3E%3C/svg%3E"); }
   .prose h2 { font-size: 24px; margin-top: 32px; }
-  .prose h3 { font-size: 16px; margin-top: 24px; color: var(--afia-gold-600); }
+  .prose h3 { font-size: 16px; margin-top: 24px; color: var(--afia-gold-ink); }
   .prose p, .prose ul { margin-top: 12px; max-width: 68ch; }
   .measure { max-width: 68ch; }
   .prose ul { list-style: disc; padding-left: 20px; }
@@ -68,6 +68,9 @@
    Clash Display has a wide "0", so 58ch lands at roughly 70 real characters here. */
 main p, main li, main dd { max-width: 58ch; }
 main p.mx-auto, main li.mx-auto, main dd.mx-auto { margin-inline: auto; }
+/* The 58ch cap above is for reading columns. A ruled, full-width row is not one: it spans
+   the grid and caps its own paragraph instead, so it opts out. Unlayered, like the cap. */
+main li.nominee-row, main li.ruled-row, main nav li { max-width: none; }
 /* the cap shrinks the box, so centred containers keep their paragraphs centred */
 main .text-center p, main .text-center li, main .text-center dd, main .text-center blockquote { margin-inline: auto; }
 
@@ -78,4 +81,47 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
   .reveal { transform: none; animation: none; }
   .card-dark:hover { transform: none; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* ── Nominee and juror portraits ─────────────────────────────────────────── */
+@layer components {
+  .portrait-placeholder {
+    /* Opaque on purpose. The first version was translucent and washed out to 1.17:1
+       wherever the plate sat on a white section. Both ends now clear 4.5:1 against
+       the cream initials, on any background. */
+    background: linear-gradient(145deg, #7A5A23, #4A3515);
+    border: 1px dashed rgba(204,152,61,0.75);
+    color: #F6E3C3;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+}
+
+/* ── Nominee index rows (Direction A, from awwwards-offfforum /schedule) ─── */
+@layer components {
+  .nominee-row {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 20px 16px 20px 0;
+    border-top: 1px solid rgba(187,123,35,0.22);
+    transition: background-color 220ms ease, padding-left 220ms ease;
+  }
+  .nominee-row:hover { background: rgba(187,123,35,0.07); padding-left: 12px; }
+  .nominee-tag {
+    flex-shrink: 0; align-self: center; margin-left: auto;
+    font-family: var(--font-display); font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--afia-gold-500);
+    border: 1px solid rgba(204,152,61,0.45); border-radius: var(--radius-pill);
+    padding: 5px 13px; white-space: nowrap;
+  }
+}
+@media (max-width: 639px) {
+  .nominee-row { flex-wrap: wrap; gap: 14px; padding-right: 0; }
+  .nominee-row > div { flex-basis: calc(100% - 78px); }
+  .nominee-tag { align-self: flex-start; margin-left: 84px; margin-top: -6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nominee-row:hover { padding-left: 0; }
 }

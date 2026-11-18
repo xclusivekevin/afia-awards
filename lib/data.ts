@@ -6,12 +6,12 @@ export const NOMINEES_2025: [string, Nominee[]][] = [
   ["Food Influencer of the Year", [{ name: "Sisi Yemmie (Nigeria)" }, { name: "Tolani Tayo-Osikoya (Nigeria)" }, { name: "Kaluhi Adagala (Kenya)" }, { name: "Kinorah Awini (Ghana)" }, { name: "Gina Ehikodi Ojo (Nigeria)" }]],
   ["Culinary Storyteller Award", [{ name: "Ozoz Sokoh (Nigeria)" }, { name: "Stephen Satterfield (USA/Ghana)" }, { name: "Imma Adamu (Cameroon/USA)" }, { name: "Ameyaw Debrah (Ghana)" }, { name: "Zoe Adjonyoh (Ghana/UK)" }]],
   ["African Food Brand of the Year", [{ name: "So Fresh (Nigeria)", logo: "sofreshLogo__.c59a42a232539ec1f776.png" }, { name: "AACE Foods (Nigeria)", logo: "AACE-Foods-Nigeria.webp" }, { name: "Yolélé Foods (Senegal/USA)", logo: "yolele.png" }, { name: "Nuli (Nigeria/USA)", logo: "Nuli-Nigeria_USA.png" }, { name: "Java Foods (Zambia)", logo: "Java-Foods-Zambia.jpg" }]],
-  ["African Drinks Brand of the Year", [{ name: "Kasapreko Company Ltd (Ghana)", logo: "Kasapreko.avif" }, { name: "Rite Foods – Bigi & Fearless (Nigeria)", logo: "ritefoods_logo.jpg" }, { name: "Orijin – Guinness Nigeria (Nigeria)", logo: "orijin.jpg" }, { name: "Savanna Premium Cider (South Africa)", logo: "savanna-logo-png_seeklogo-260787.png" }, { name: "Mutzig Beer (Cameroon/DRC)", logo: "MUTZIG.webp" }]],
-  ["Food Innovation & Entrepreneurship Award", [{ name: "Kola Masha – Babban Gona (Nigeria)" }, { name: "Wawira Njiru – Food for Education (Kenya)" }, { name: "Alloysius Attah – Farmerline (Ghana)" }, { name: "Uka Eje – ThriveAgric (Nigeria)" }, { name: "Monica Musonda – Java Foods (Zambia)" }]],
+  ["African Drinks Brand of the Year", [{ name: "Kasapreko Company Ltd (Ghana)", logo: "Kasapreko.avif" }, { name: "Rite Foods, Bigi & Fearless (Nigeria)", logo: "ritefoods_logo.jpg" }, { name: "Orijin, Guinness Nigeria (Nigeria)", logo: "orijin.jpg" }, { name: "Savanna Premium Cider (South Africa)", logo: "savanna-logo-png_seeklogo-260787.png" }, { name: "Mutzig Beer (Cameroon/DRC)", logo: "MUTZIG.webp" }]],
+  ["Food Innovation & Entrepreneurship Award", [{ name: "Kola Masha, Babban Gona (Nigeria)" }, { name: "Wawira Njiru, Food for Education (Kenya)" }, { name: "Alloysius Attah, Farmerline (Ghana)" }, { name: "Uka Eje, ThriveAgric (Nigeria)" }, { name: "Monica Musonda, Java Foods (Zambia)" }]],
   ["Sustainability Champion Award", [{ name: "Chef Fatmata Binta (Guinea/Sierra Leone)" }, { name: "Dr Agnes Kalibata (Rwanda)" }, { name: "Ndidi Okonkwo Nwuneli (Nigeria)" }, { name: "Wawira Njiru (Kenya)" }, { name: "Chef Dieuveil Malonga (Congo/Rwanda)" }]],
-  ["Community Impact Award", [{ name: "Michael Sunbola – Lagos Food Bank Initiative (Nigeria)" }, { name: "Elijah Amoo Addo – Food for All Africa (Ghana)" }, { name: "Isabelle Kamariza – Solid’Africa (Rwanda)" }, { name: "Amb. Gift Emmanuel Agbas – Promiseland Foundation (Nigeria)" }, { name: "Chef Ali Mandhry (Kenya)" }]],
-  ["African Diaspora Food Voice", [{ name: "Pierre Thiam (Senegal/USA)" }, { name: "Marcus Samuelsson (Ethiopia/Sweden/USA)" }, { name: "Zoe Adjonyoh (Ghana/UK)" }, { name: "Eric Adjepong (Ghana/USA)" }, { name: "Imma Adamu – Immaculate Bites (Cameroon/USA)" }]],
-  ["Rising Star in Food & Drinks", [{ name: "Chef Neo Nontso – Dine with Neo (South Africa)" }, { name: "Chef Tracy Nwapa – Òkàn Lagos (Nigeria)" }, { name: "Chef Aliyyah Musa – Zanzibar Kitchen Stories (Tanzania)" }, { name: "Chef Abdoulaye Faye – Dakar Street Grill (Senegal)" }]],
+  ["Community Impact Award", [{ name: "Michael Sunbola, Lagos Food Bank Initiative (Nigeria)" }, { name: "Elijah Amoo Addo, Food for All Africa (Ghana)" }, { name: "Isabelle Kamariza, Solid’Africa (Rwanda)" }, { name: "Amb. Gift Emmanuel Agbas, Promiseland Foundation (Nigeria)" }, { name: "Chef Ali Mandhry (Kenya)" }]],
+  ["African Diaspora Food Voice", [{ name: "Pierre Thiam (Senegal/USA)" }, { name: "Marcus Samuelsson (Ethiopia/Sweden/USA)" }, { name: "Zoe Adjonyoh (Ghana/UK)" }, { name: "Eric Adjepong (Ghana/USA)" }, { name: "Imma Adamu, Immaculate Bites (Cameroon/USA)" }]],
+  ["Rising Star in Food & Drinks", [{ name: "Chef Neo Nontso, Dine with Neo (South Africa)" }, { name: "Chef Tracy Nwapa, Òkàn Lagos (Nigeria)" }, { name: "Chef Aliyyah Musa, Zanzibar Kitchen Stories (Tanzania)" }, { name: "Chef Abdoulaye Faye, Dakar Street Grill (Senegal)" }]],
   ["Lifetime Achievement Award", [{ name: "Dr Lindiwe Majele Sibanda (Zimbabwe/South Africa)" }, { name: "Chef Christian Abégan (Cameroon)" }, { name: "Jenny Morris (South Africa)" }, { name: "Anto Cocagne (Gabon/France)" }, { name: "Dr Akinwumi Adesina (Nigeria)" }]],
 ];
 export type Winner = { category: string; name: string; image?: string; bio: string; kind?: "person" | "brand" };
@@ -32,14 +32,21 @@ export const WINNERS_2025: Winner[] = [
   { category: "Special Recognition Award", name: "Beke Igwe", image: "Beke-Igwe.jpeg", bio: "Beke Igwe is the Director of Beke's Kitchen Limited (which also operates as Bekes Caterers) and identifies herself as a \"foodpreneur\" rather than just a chef. She has over 15 years of experience in the hospitality industry, specializing in authentic African and Caribbean gourmet catering services across the UK and the Middle East." },
 ];
 
-/** The thirteen categories grouped under the four tracks used on the home page. */
-export const TRACKS: { key: string; name: string; blurb: string; categories: string[] }[] = [
-  { key: "culinary", name: "Culinary Excellence", blurb: "Chefs, restaurateurs and culinary professionals at the forefront of African cuisine.",
-    categories: ["Chef of the Year", "Restaurant of the Year", "Street Food Champion"] },
-  { key: "media", name: "Media and Influence", blurb: "Creators, journalists and digital voices reshaping how the world understands African food.",
-    categories: ["Food Influencer of the Year", "Culinary Storyteller Award", "African Diaspora Food Voice"] },
-  { key: "brands", name: "Brands and Innovation", blurb: "The food brands, agrifood ventures and hospitality concepts driving Africa's food economy forward.",
-    categories: ["African Food Brand of the Year", "African Drinks Brand of the Year", "Food Innovation & Entrepreneurship Award"] },
-  { key: "legacy", name: "Future and Legacy", blurb: "The educators, advocates and cultural custodians building the long-term foundations of African food culture.",
-    categories: ["Sustainability Champion Award", "Community Impact Award", "Rising Star in Food & Drinks", "Lifetime Achievement Award"] },
+/**
+ * The four tracks, derived from the approved 2026 category list so the two can never drift.
+ * Changing a category name or adding one happens in `lib/nominees.ts` only.
+ */
+import { CATEGORIES_2026 } from "./nominees";
+
+const TRACK_META: { key: Category2026Track; name: string; blurb: string }[] = [
+  { key: "culinary", name: "Culinary Excellence", blurb: "Chefs, restaurateurs and culinary professionals at the forefront of African cuisine." },
+  { key: "media", name: "Media and Influence", blurb: "Creators, journalists and digital voices reshaping how the world understands African food." },
+  { key: "brands", name: "Brands and Innovation", blurb: "The food brands, agrifood ventures and hospitality concepts driving Africa's food economy forward." },
+  { key: "legacy", name: "Future and Legacy", blurb: "The educators, advocates and cultural custodians building the long-term foundations of African food culture." },
 ];
+type Category2026Track = "culinary" | "media" | "brands" | "legacy";
+
+export const TRACKS: { key: string; name: string; blurb: string; categories: string[] }[] = TRACK_META.map((t) => ({
+  ...t,
+  categories: CATEGORIES_2026.filter((c) => c.track === t.key).map((c) => c.name),
+}));

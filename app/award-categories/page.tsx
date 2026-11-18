@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
 import { TRACKS } from "@/lib/data";
-export const metadata: Metadata = { title: "Award Categories", description: "Thirteen AFIA awards across four tracks: Culinary Excellence, Media and Influence, Brands and Innovation, Future and Legacy." };
+import { CATEGORIES_2026 } from "@/lib/nominees";
+import { AFIA } from "@/lib/event";
+export const metadata: Metadata = { title: "Award Categories", description: "Fourteen AFIA awards across four tracks: Culinary Excellence, Media and Influence, Brands and Innovation, Future and Legacy. Decided by an independent jury." };
 
 function TrackIcon({ k }: { k: string }) {
   const p = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, width: 22, height: 22, viewBox: "0 0 24 24" };
@@ -16,7 +18,7 @@ export default function Categories() {
   let n = 0;
   return (
     <>
-      <PageHero title="Award Categories" sub="Thirteen awards across four tracks. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
+      <PageHero title="Award Categories" sub="Fourteen awards across four tracks. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
       <section className="dark section">
         <div className="container space-y-14">
           {TRACKS.map((t) => (
@@ -32,14 +34,17 @@ export default function Categories() {
                   return (
                     <li key={c} className="card-dark reveal flex items-start gap-4 !p-6">
                       <span className="display text-[24px] font-semibold leading-none text-[color:var(--afia-gold-500)]">{String(n).padStart(2, "0")}</span>
-                      <h3 className="text-[17px] leading-[1.3] text-white">{c}</h3>
+                      <div>
+                        <h3 className="text-[17px] leading-[1.3] text-white">{c}</h3>
+                        <p className="mt-2 text-[13px] leading-relaxed text-white/70">{CATEGORIES_2026.find((x) => x.name === c)?.line}</p>
+                      </div>
                     </li>
                   );
                 })}
               </ul>
             </div>
           ))}
-          <div className="pt-4 text-center"><Btn href="/nominate">Submit a Nomination</Btn></div>
+          <div className="pt-4 text-center"><Btn href="/nominees">See who is nominated</Btn></div>
         </div>
       </section>
     </>

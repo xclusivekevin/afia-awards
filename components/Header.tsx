@@ -7,8 +7,9 @@ import { usePathname } from "next/navigation";
 type Item = { label: string; href: string; children?: { label: string; href: string; external?: boolean }[] };
 const NAV: Item[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about", children: [{ label: "About AFIA", href: "/about" }, { label: "About African Food Network", href: "https://afrifoodnetwork.com/", external: true }, { label: "About CAPA (AFIA 2026 National Host Partner)", href: "https://capanigeria.org/", external: true }] },
-  { label: "2026 Awards", href: "/2026-awards", children: [{ label: "Theme and Overview", href: "/2026-awards" }, { label: "Award Categories", href: "/award-categories" }, { label: "Nominate", href: "/nominate" }] },
+  { label: "About", href: "/about", children: [{ label: "About AFIA", href: "/about" }, { label: "About African Food Network", href: "https://afrifoodnetwork.com/", external: true }] },
+  { label: "2026 Awards", href: "/2026-awards", children: [{ label: "AFIA 2026 and how to watch", href: "/2026-awards" }, { label: "The 2026 Nominees", href: "/nominees" }, { label: "Award Categories", href: "/award-categories" }, { label: "Jury and Governance", href: "/governance" }] },
+  { label: "Nominees", href: "/nominees" },
   { label: "Past Winners", href: "/winners", children: [{ label: "2025 Winners", href: "/winners/2025-winners" }, { label: "2025 Nominees", href: "/2025-nominees" }] },
   { label: "Partners", href: "/partners", children: [{ label: "Current Partners", href: "/partners#current-partners" }, { label: "Partnership Opportunities", href: "/partners#partnership-opportunities" }] },
   { label: "Press & Media", href: "/press", children: [{ label: "Press Kit", href: "/press#press-kit" }, { label: "Media Coverage", href: "/press#media-coverage" }, { label: "Media Enquiries", href: "/press#media-enquiries" }] },

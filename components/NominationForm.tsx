@@ -36,7 +36,7 @@ export default function NominationForm() {
         {STEPS.map((label, i) => (
           <li key={label} className="flex-1">
             <div className={`h-1 rounded-full ${i <= step ? "bg-[color:var(--afia-gold-600)]" : "bg-[#E6E0D6]"}`} />
-            <p className={`mt-2 text-[12px] ${i === step ? "font-semibold text-black" : "text-[color:var(--afia-grey-600)]"}`}>
+            <p className={`mt-2 text-[12px] ${i === step ? "font-semibold text-black" : "text-[color:var(--afia-grey-700)]"}`}>
               <span className="sr-only">Step {i + 1} of {STEPS.length}: </span>{label}
             </p>
           </li>
@@ -58,7 +58,7 @@ export default function NominationForm() {
         <label className="label mt-4">Tell us why this person or brand deserves recognition. What have they built, changed, or contributed? Be specific. *
           <textarea className="input min-h-[190px]" name="reason" required maxLength={2400} onChange={(e) => setWords(e.target.value.trim() ? e.target.value.trim().split(/\s+/).length : 0)} />
         </label>
-        <p className={`text-[12px] ${words > 300 ? "text-red-600" : "text-[color:var(--afia-grey-600)]"}`} aria-live="polite">{words} of 300 words maximum</p>
+        <p className={`text-[12px] ${words > 300 ? "text-red-600" : "text-[color:var(--afia-grey-700)]"}`} aria-live="polite">{words} of 300 words maximum</p>
       </div>
 
       <div data-step="2" hidden={step !== 2}>
@@ -78,7 +78,7 @@ export default function NominationForm() {
           ? <button type="button" onClick={next} className="btn btn--primary">Continue</button>
           : <button type="submit" disabled={state === "sending"} className="btn btn--primary disabled:opacity-60">{state === "sending" ? "Sending…" : "Submit Nomination"}</button>}
       </div>
-      <p className="mt-4 text-[12px] text-[color:var(--afia-grey-600)]">Nomination is free. Self-nomination is permitted. All submissions are treated confidentially.</p>
+      <p className="mt-4 text-[12px] text-[color:var(--afia-grey-700)]">Nomination is free. Self-nomination is permitted. All submissions are treated confidentially.</p>
     </form>
   );
 }
