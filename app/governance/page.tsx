@@ -122,9 +122,11 @@ export default function Governance() {
           )}
 
           {/* Independence rules. These apply whether or not the names are out. */}
-          <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          {/* Heading sits over the list rather than beside it: as a narrow column it
+              was two lines of type with 400px of empty black under it. */}
+          <div className="mt-14">
             <h3 className="text-[length:var(--text-h2)] text-white">How independence is protected</h3>
-            <ul className="list-gold space-y-4 text-[15px] text-white/85">
+            <ul className="list-gold mt-8 grid gap-x-12 gap-y-4 text-[15px] text-white/85 md:grid-cols-2">
               {RULES.map((r) => <li key={r}>{r}</li>)}
             </ul>
           </div>
