@@ -34,7 +34,7 @@ Social: instagram.com/afrifoodawards · tiktok.com/@afrifoodawards · x.com/afri
 ## AFIA 2026 at a glance
 
 - **What:** ${AFIA.name}, the ${AFIA.edition.toLowerCase()}
-- **When:** ${AFIA.dateLong}, ${AFIA.time} (${AFIA.timeZones})
+- **When:** ${AFIA.dateLong}. The start time is announced nearer the date.
 - **Where:** ${AFIA.format}. ${AFIA.watchHow}
 - **Cost:** ${AFIA.price}. Nomination is free and winning cannot be bought.
 - **Scale:** ${TOTAL_NOMINEES} nominees from ${TOTAL_COUNTRIES} countries across ${AFIA.awards} awards

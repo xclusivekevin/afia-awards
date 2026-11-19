@@ -12,12 +12,16 @@ export const AFIA = {
   short: "AFIA 2026",
   edition: "Second edition",
 
-  /** Saturday 12 December 2026, 7pm WAT. Online. */
+  /** Saturday 12 December 2026. Online. The start time is NOT published:
+   *  Kevin, 19 Nov 2026, "stick with only the date". `time` and `timeZones`
+   *  are deleted rather than left unused, so anything that reaches for them
+   *  fails the typecheck instead of quietly putting an hour back on the site. */
   dateLong: "Saturday 12 December 2026",
   dateShort: "12 December 2026",
-  time: "7:00pm WAT",
-  timeZones: "7pm Lagos · 6pm London · 8pm Johannesburg · 9pm Nairobi · 1pm New York",
+  /** The countdown needs an instant. It is never rendered as a clock time,
+   *  and the Event schema publishes the DATE only. */
   startISO: "2026-12-12T19:00:00+01:00",
+  startDateOnly: "2026-12-12",
   endISO: "2026-12-12T20:30:00+01:00",
 
   format: "Online",

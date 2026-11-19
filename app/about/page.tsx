@@ -66,7 +66,7 @@ export default function About() {
         <div className="container relative z-[2]">
           <h2 className="poster !text-[clamp(28px,3.6vw,48px)]">This edition</h2>
           <dl className="ruled mt-9">
-            <div className="ruled-row"><dt className="ruled-row__k">The night</dt><dd className="ruled-row__v">{AFIA.dateLong}, {AFIA.time}. Online, and free to watch.</dd></div>
+            <div className="ruled-row"><dt className="ruled-row__k">The night</dt><dd className="ruled-row__v">{AFIA.dateLong}. Online, and free to watch.</dd></div>
             <div className="ruled-row"><dt className="ruled-row__k">Who decides</dt><dd className="ruled-row__v">An independent jury, scoring every nominee on impact, excellence and contribution to African food. There is no public vote.</dd></div>
             <div className="ruled-row"><dt className="ruled-row__k">The slate</dt><dd className="ruled-row__v">Announced on {AFIA.nomineesAnnounced}, drawn from across the continent and the diaspora.</dd></div>
             <div className="ruled-row"><dt className="ruled-row__k">Where to watch</dt><dd className="ruled-row__v">{AFIA.watchHow}</dd></div>

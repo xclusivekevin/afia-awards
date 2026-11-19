@@ -18,7 +18,7 @@ const TIMELINE: [string, string, boolean][] = [
   ["Jury scoring opens", "16 November 2026", true],
   ["Jury announced", AFIA.juryAnnounced, false],
   ["Scoring closes", AFIA.scoringCloses, false],
-  ["Ceremony and winners", `${AFIA.dateShort}, ${AFIA.time}`, false],
+  ["Ceremony and winners", AFIA.dateShort, false],
 ];
 
 export default function Awards2026() {
@@ -52,16 +52,16 @@ export default function Awards2026() {
               from the winner. The AFN 100 follows the next day, on {AFIA.afn100Published}.
             </p>
           </div>
-          <dl className="grid gap-px overflow-hidden rounded-[16px] border border-[color:var(--color-card-border)] bg-[color:var(--color-card-border)] sm:grid-cols-2">
-            {([["Date", AFIA.dateLong], ["Time", AFIA.time], ["Where", `${AFIA.format} · ${AFIA.venueName}`], ["Price", AFIA.price]] as [string, string][]).map(([k, v]) => (
+          <dl className="grid gap-px overflow-hidden rounded-[16px] border border-[color:var(--color-card-border)] bg-[color:var(--color-card-border)] sm:grid-cols-3">
+            {([["Date", AFIA.dateLong], ["Where", `${AFIA.format} · ${AFIA.venueName}`], ["Price", AFIA.price]] as [string, string][]).map(([k, v]) => (
               <div key={k} className="bg-white p-6">
                 <dt className="display text-[12px] uppercase tracking-[0.1em] ink-gold">{k}</dt>
                 <dd className="mt-2 text-[17px] text-black">{v}</dd>
               </div>
             ))}
-            <div className="bg-white p-6 sm:col-span-2">
-              <dt className="display text-[12px] uppercase tracking-[0.1em] ink-gold">Around the world</dt>
-              <dd className="mt-2 text-[15px] text-black">{AFIA.timeZones}</dd>
+            <div className="bg-white p-6 sm:col-span-3">
+              <dt className="display text-[12px] uppercase tracking-[0.1em] ink-gold">Start time</dt>
+              <dd className="mt-2 text-[15px] text-black">Announced nearer the date. Sign up and it is sent to you with the link.</dd>
             </div>
           </dl>
         </div>

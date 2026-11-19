@@ -86,7 +86,7 @@ export default function Home() {
           <div className="hero-rule">
             <Ribbon>Nominees</Ribbon>
             <p className="display text-[15px] font-medium text-white md:text-[19px]">
-              <TypedDate text={`${AFIA.dateLong} · ${AFIA.time}`} />
+              <TypedDate text={AFIA.dateLong} />
             </p>
             <span className="hero-rule__line" aria-hidden />
             <Countdown to={AFIA.startISO} passed="The winners are in." align="start" />

@@ -27,8 +27,9 @@ export default function StructuredData() {
       name: AFIA.name,
       alternateName: AFIA.short,
       description: `The second edition of the African Food Influencers Awards. ${TOTAL_NOMINEES} nominees from ${TOTAL_COUNTRIES} countries across ${AFIA.awards} awards, decided by an independent jury with no public vote. Streamed free online.`,
-      startDate: AFIA.startISO,
-      endDate: AFIA.endISO,
+      // DATE only. Publishing 19:00 would put a start time in Google's rich
+      // result that the site itself does not state (Kevin, 19 Nov 2026).
+      startDate: AFIA.startDateOnly,
       eventStatus: "https://schema.org/EventScheduled",
       eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
       location: { "@type": "VirtualLocation", url: SITE },

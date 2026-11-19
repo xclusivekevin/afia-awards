@@ -68,7 +68,7 @@ export default function Nominees() {
         <div className="container">
           <h2 className="poster mx-auto !text-[clamp(28px,3.6vw,52px)]">The winners are read out on {AFIA.dateShort}</h2>
           <p className="lede mx-auto mt-4 max-w-2xl text-white/85">
-            {AFIA.watchHow} {AFIA.timeZones}.
+            {AFIA.watchHow}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-5">
             <Btn href="/2026-awards">Watch it live</Btn>

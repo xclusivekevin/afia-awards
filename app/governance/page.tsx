@@ -40,7 +40,7 @@ export default function Governance() {
       { q: "How are AFIA winners chosen?", a: `Each juror scores every nominee in their assigned categories from 1 to 10 on three dimensions: impact in 2025 and 2026, excellence, and contribution to African food. The three scores combine into that juror's nominee score, and the category winner is the nominee with the highest average across the jurors who scored that category.` },
       { q: "Can you pay to win an AFIA award?", a: "No. Nomination is free and AFIA operates a zero pay-to-play policy. Sponsorship confers no advantage in the selection process, and sponsors do not see the scores." },
       { q: "Who can be nominated for AFIA?", a: "Anyone of African descent, anywhere in the world, whose work promotes African food and culture. The work may be based outside Africa provided its impact is demonstrably connected to African food culture, African food industries or the African diaspora food community." },
-      { q: "When are the AFIA 2026 winners announced?", a: `${AFIA.dateLong} at ${AFIA.time}, online. ${AFIA.watchHow}` },
+      { q: "When are the AFIA 2026 winners announced?", a: `${AFIA.dateLong}, online. ${AFIA.watchHow}` },
     ].map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
 
