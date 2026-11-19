@@ -119,7 +119,9 @@ export default function NomineeIndex() {
                 {c.nominees.map((nm, i) => (
                   <li
                     key={nm.name}
-                    className={`reveal w-[calc(50%-0.75rem)] max-w-[330px] sm:w-[calc(50%-1rem)] ${
+                    /* one-up on a phone: two-up put the bios in ~165px columns, about 22
+                       characters a line, which is not readable */
+                    className={`reveal w-full max-w-[330px] sm:w-[calc(50%-1rem)] ${
                       c.nominees.length === 4 ? "md:w-[calc(50%-1rem)]" : "md:w-[calc(33.333%-1.34rem)]"
                     }`}
                   >
