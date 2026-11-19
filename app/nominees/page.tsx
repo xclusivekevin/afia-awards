@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
 import NomineeIndex from "@/components/NomineeIndex";
+import Ankara from "@/components/Ankara";
 import { CATEGORIES_2026, TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
 import { AFIA } from "@/lib/event";
 
@@ -76,7 +77,10 @@ export default function Nominees() {
         </div>
       </section>
 
-      <section className="dark section">
+      {/* the ankara runs down the page edges, outside the reading column */}
+      <section className="dark section relative overflow-hidden">
+        <Ankara side="left" />
+        <Ankara side="right" />
         <NomineeIndex />
       </section>
 

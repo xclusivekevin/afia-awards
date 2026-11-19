@@ -80,8 +80,9 @@ export const JURY_ROLLING = true;
 export type Juror = { name: string; role: string; country: string; photo?: string };
 
 export const JURY_2026: Juror[] = [
-  { name: "Ameyaw Debrah", role: "Founder, Ameyaw Debrah Media", country: "Ghana" },
-  { name: "Tshegofatso Stone", role: "Chef", country: "South Africa" },
+  { name: "Ameyaw Debrah", role: "Founder, Ameyaw Debrah Media", country: "Ghana", photo: "ameyaw-debrah.webp" },
+  { name: "Duchess Nena", role: "Vegan chef and plant-based nutritionist", country: "Nigeria", photo: "duchess-nena.webp" },
+  { name: "Tshegofatso Stone", role: "Chef", country: "South Africa", photo: "tshegofatso-stone.webp" },
   { name: "Dr Robert Fungo", role: "Makerere University", country: "Uganda" },
 ];
 

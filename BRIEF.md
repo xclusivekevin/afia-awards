@@ -1,46 +1,55 @@
-# BRIEF: AFIA 2026 site update
+# BRIEF: AFIA 2026 site, v2 (the poster build)
 
-John, 18 November 2026. Direction **A, "The Index"** (see `BRAINSTORM.md`).
-Brand guide: `Web Design/Design Guides/afia/` v1.0, which outranks John's taste and PDOS style.
+John, 19 November 2026. Supersedes the 18 November brief, which is kept in git history.
+Design system: **`Web Design/Design Guides/afia/afia-2026-design-system.md` v2.0**, built
+tonight from AFN's own fourteen category posts.
 
-## The capture whose skeleton is being rebuilt
+## Why a second pass
 
-**`02_LIBRARY/sites/height/awwwards-offfforum/`**, the `lineup` and `schedule` pages. Images opened and looked at on 18 November 2026.
+Kevin, 19 November: the site "can be better than what it is", the nominee images must be
+bigger, and the build should use real component libraries and carry motion. The first 2026
+build was correct but plain: flat black, one gold, 64px circular avatars, one rhythm for
+14,000px. Meanwhile AFN's own campaign, already in front of the audience on Instagram, is a
+much richer thing. The site was the only AFIA surface not speaking that language.
 
-What is being taken: the label block set hard into the top-left corner; the big typographic list that alternates weight line by line; the right-hand index column; and, from `schedule`, the ruled row that carries a small thumbnail at its right edge. What is not being taken: OFFF's fonts, its black-on-white, its wordmark, any asset.
+## The captures each page is rebuilt from
 
-Second capture, for the long name-and-tag list and for the jury portraits: **`02_LIBRARY/sites/height/awwwards-thessaloniki-sto-piato/`** ("Hosts" section, "Stories + Interviews" section).
+Opened and looked at tonight, not read about.
 
-## Components, and the section each one serves
+| Page | Capture | What is taken |
+|---|---|---|
+| Home hero | `height/awwwards-les-francouvertes` | the phase headline at poster scale with staggered line indents; the date that types itself out |
+| `/nominees` grid | AFN's own 14 category posts | the taped card grid, three up, name and country under each |
+| `/nominees` rail | `height/awwwards-offfforum` `/lineup` + `/schedule` | the sticky numbered category rail beside the content |
+| Past editions | `height/awwwards-dick-clark-productions` | show logo over a real photograph, card per edition |
+| Partner wall | `height/awwwards-les-francouvertes` | the logo grid at the foot |
 
-Every one is rebuilt in this site's own code. No library code ships.
+Nothing from a studied site ships. No asset, no copy, no code.
+
+## Components, and the section each serves
+
+Each is rebuilt in this site's own code. No library code ships.
 
 | Component (source idea) | Section it serves |
 |---|---|
-| **shadcn `Tabs`** (anchor-link variant, no JS library) | `/nominees`: the four track filters above the index |
-| **Aceternity "Sticky Scroll Reveal"** | `/nominees`: the sticky 14-category rail, active item marked as you scroll |
-| **React Bits "Animated List"** | `/nominees`: staggered row reveal, transform only, never opacity |
-| **HyperUI "Description List"** | `/nominees`: the name / country-tag row pairing |
-| **shadcn `Avatar` fallback** | `/nominees` and `/governance`: the placeholder portrait, nominee initials on a gold-brown plate, until Kevin sends photographs |
-| **Magic UI "Number Ticker"** | Home: the countdown to 12 December, 7pm WAT (the existing `Countdown.tsx`, retargeted) |
-| **shadcn `Badge`** | The phase chip and the country tags |
+| **React Bits "Decrypted Text"** | `TypedDate`: the ceremony date types itself in the hero. The text treatment that is not a fade (hard rule 15) |
+| **Aceternity "Spotlight"** | the hero glow, drifting at a different depth from the content |
+| **Aceternity "Tracing Beam"** | the sticky category rail on `/nominees`, with the beam marking the live section |
+| **React Bits "Spotlight Card"** | `TapedCard`: lift and straighten on hover |
+| **Magic UI "Shine Border"** | the travelling highlight on the gold rule and on the trophy |
+| **Magic UI "Number Ticker"** | the stat band, counting up when it enters the viewport |
+| **21st.dev "Bento Grid"** | the four tracks on the home page, unequal cells rather than four identical cards |
+| **shadcn `Badge`** | the country tag and the phase chip |
+| **HyperUI "Description List"** | the ceremony facts table on `/2026-awards` |
+| **Drawn in code (no library)** | `Ankara`, the SVG border band, and `Trophy`, which draws its own outline |
 
-## Pages
+## Hard rules this build is held to
 
-| Page | What happens |
-|---|---|
-| `/nominees` | **New.** 66 nominees, 14 categories, four tracks. Placeholder portraits. Name, country, one short line each. No contact details, no social handles, no sources (Kevin, 18 Nov). |
-| `/governance` | **Rebuilt** as the jury page: how winners are chosen, the three scoring dimensions, independence and conflict rules, the 2026 timeline, the 2026 roster behind `JURY_PUBLISHED`, the 2025 jury as an archive block. |
-| `/` | Phase corrected: nominees announced, countdown to 12 December, fourteen awards, no CAPA, "Watch on 12 December" as the audience action. |
-| `/2026-awards` | The real fourteen categories and the real timeline. Every `[TBC]` removed. |
-| `/award-categories` | Fourteen, with Plant-Based Influencer of the Year added. |
-| `/about`, `/partners`, `/nominate`, `/winners`, header | Thirteen to fourteen; CAPA removed; nominations shown as closed; nominees added to the nav. |
-| `llms.txt`, JSON-LD, sitemap | GEO and SEO layer. `Event` schema is now allowed: the date is real and public. |
-
-## Rules this build is held to
-
-- Tier 0: **two eyebrows per page maximum**, no horizontal tickers.
-- Motion animates **transform only**; nothing hides itself; `prefers-reduced-motion` leaves a complete page (John hard rule 15, and the AFSE lesson of 24 September).
-- Countdown must be a real future date and must change state once it passes (`vert-events` rule 31, PDOS LAW-03).
-- Every nominee name is published exactly as Joy's approved list spells it. No invented facts, no invented dates.
-- Placeholders are **marked as placeholders** (John hard rule 6).
+- Tier 0: two eyebrows a page maximum, no horizontal tickers. **Les Francouvertes uses a
+  ticker rail between every section and we do not copy it.**
+- Motion animates transform and opacity only on things that are decorative; nothing that
+  carries words hides itself. `prefers-reduced-motion` leaves a complete page.
+- The ribbon orange carries large text only; it is 3.4:1 with white.
+- Every nominee name and country exactly as Joy's approved list spells it.
+- Images: 57 of 66 nominees now have a real photograph. The nine without keep the marked
+  placeholder, and it must still read as deliberate at card size.

@@ -26,7 +26,12 @@
   .container { max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
   .section { padding-block: var(--section-y); }
   @media (max-width: 767px) { .section { padding-block: var(--section-y-mobile); } }
-  .dark { background: var(--color-bg-dark); color: var(--color-text-on-dark); }
+  .dark {
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(232,181,92,0.10), transparent 70%),
+      linear-gradient(178deg, var(--afia-field-warm) 0%, var(--afia-field) 38%, var(--afia-field-cool) 100%);
+    color: var(--color-text-on-dark);
+  }
   .dark h1, .dark h2, .dark h3 { color: #fff; }
   /* gold on dark stays bright; only the on-white gold is darkened for contrast */
   .dark .gold, .dark .text-\[color\:var\(--afia-gold-500\)\] { color: var(--afia-gold-500); }
@@ -77,6 +82,11 @@ main li.nominee-row, main li.ruled-row, main nav li { max-width: none; }
    width is stated outright instead. */
 main li.nominee-row p { max-width: 62ch; }
 main li.ruled-row p, main nav li p { max-width: none; }
+/* The 58ch cap also reaches the nominee and jury CARDS, where it is meaningless:
+   it was sizing a photograph by a reading measure and made a two-up card 521px.
+   Card width is a design decision, stated here. */
+main .cat li, main .taped-card { max-width: 360px; }
+main .taped-card__cap, main .taped-card__well { max-width: none; }
 /* the cap shrinks the box, so centred containers keep their paragraphs centred */
 main .text-center p, main .text-center li, main .text-center dd, main .text-center blockquote { margin-inline: auto; }
 
@@ -130,4 +140,149 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
 }
 @media (prefers-reduced-motion: reduce) {
   .nominee-row:hover { padding-left: 0; }
+}
+
+/* ── AFIA 2026 v2.0: ankara, ribbon, taped cards ────────────────────────── */
+@layer components {
+  /* the border band drifts at a tenth of scroll speed: the second depth */
+  .ankara { opacity: 0.32; background-repeat: repeat-y; background-size: 18px 120px;
+            animation: ankara-drift linear both; animation-timeline: scroll(root block); }
+  @keyframes ankara-drift { from { transform: translateY(0); } to { transform: translateY(-120px); } }
+
+  .ribbon { display: inline-flex; align-items: stretch; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); }
+  .ribbon__body {
+    background: var(--afia-ribbon); color: #fff;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(18px, 2.2vw, 26px); text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 10px 26px; line-height: 1.2;
+  }
+  .ribbon__fold {
+    width: 18px; background: var(--afia-ribbon);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 36% 50%);
+    filter: brightness(0.82);
+  }
+  .ribbon__fold--r { clip-path: polygon(0 0, 100% 0, 64% 50%, 100% 100%, 0 100%); }
+
+  .taped-card {
+    position: relative; margin: 0;
+    transform: rotate(var(--tilt));
+    transition: transform 320ms cubic-bezier(0.22,1,0.36,1), box-shadow 320ms ease;
+  }
+  .taped-card:hover { transform: rotate(0deg) translateY(-6px); }
+  .taped-card__tape {
+    position: absolute; top: -11px; left: 50%; translate: -50% 0;
+    width: 86px; height: 22px; background: var(--afia-tape); opacity: 0.92;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35); z-index: 2;
+    clip-path: polygon(3% 10%, 97% 0, 100% 86%, 0 100%);
+  }
+  .taped-card__well {
+    background: var(--afia-card); padding: 10px 10px 0;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.5);
+    /* the torn paper edge of the posts */
+    clip-path: polygon(0 1%, 4% 0, 12% 1.5%, 23% 0.3%, 37% 1.6%, 51% 0.2%, 66% 1.5%, 79% 0.4%, 91% 1.6%, 100% 0.6%,
+                       99% 12%, 100% 27%, 98.8% 43%, 100% 61%, 99% 78%, 100% 92%, 96% 100%, 83% 98.8%,
+                       69% 100%, 54% 98.7%, 38% 100%, 24% 98.8%, 11% 100%, 0 99%, 1.2% 83%, 0 66%, 1.3% 48%, 0 31%, 1% 15%);
+  }
+  .taped-card__face { display: block; width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; object-position: center top; }
+  .taped-card__logo { display: block; width: 100%; height: auto; aspect-ratio: 1/1; object-fit: contain; background: #fff; padding: 8%; }
+  .taped-card__placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    aspect-ratio: 1/1; width: 100%;
+    background: linear-gradient(145deg, #7A5A23, #4A3515);
+    color: #F6E3C3; font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.04em; line-height: 1;
+  }
+  .taped-card__pending { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; }
+  .taped-card__cap { background: var(--afia-card); padding: 12px 12px 16px; text-align: center; }
+  .taped-card__name {
+    display: block; font-family: var(--font-display); font-weight: 600;
+    font-size: 15px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.01em; color: #15100A;
+  }
+  .taped-card__meta {
+    display: block; margin-top: 5px; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #6B5B45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ankara { animation: none; }
+  .taped-card, .taped-card:hover { transform: rotate(0deg); transition: none; }
+}
+
+/* ── the nominee index, v2 ──────────────────────────────────────────────── */
+@layer components {
+  .cat { position: relative; padding-block: 8px; }
+  .dark .poster, .poster {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: var(--text-poster); line-height: 0.92; letter-spacing: -0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(176deg, var(--afia-gold-hi) 2%, var(--afia-gold-200) 30%, var(--afia-gold-400) 72%, #C8923A 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 4px 22px rgba(232,181,92,0.22));
+    max-width: 16ch;
+  }
+  .rail__item {
+    display: flex; gap: 12px; align-items: baseline;
+    border-left: 2px solid rgba(255,255,255,0.16);
+    padding: 7px 0 7px 12px; font-size: 14px; line-height: 1.3;
+    color: rgba(255,255,255,0.66); transition: color 200ms ease, border-color 200ms ease;
+  }
+  .rail__item span:first-child { color: var(--afia-gold-400); }
+  .rail__item:hover { color: #fff; border-color: rgba(255,255,255,0.45); }
+  .rail__item--on { color: #fff; border-color: var(--afia-ribbon); }
+  .rail__item--on span:first-child { color: var(--afia-ribbon); }
+}
+
+/* ── typed date and the drawn trophy ────────────────────────────────────── */
+@layer components {
+  .caret { display: inline-block; width: 2px; height: 0.9em; translate: 0 2px; margin-left: 4px;
+           background: var(--afia-ribbon); animation: caret 1s steps(1) infinite; }
+  @keyframes caret { 0%,50% { opacity: 1 } 50.01%,100% { opacity: 0 } }
+
+  .trophy__sheen { animation: trophy-sheen 4.5s ease-in-out 1.2s infinite; }
+  @keyframes trophy-sheen { 0% { transform: translateX(0) } 55%,100% { transform: translateX(200px) } }
+  .trophy__line { stroke-dasharray: 120; stroke-dashoffset: 120;
+                  animation: trophy-draw 1.4s cubic-bezier(0.22,1,0.36,1) 0.3s forwards; }
+  @keyframes trophy-draw { to { stroke-dashoffset: 0 } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; opacity: 1 }
+  .trophy__sheen { animation: none; transform: translateX(200px) }
+  .trophy__line { animation: none; stroke-dashoffset: 0 }
+}
+
+/* ── the hero ───────────────────────────────────────────────────────────── */
+@layer components {
+  .hero__glow {
+    position: absolute; inset: -20% -10% auto -10%; height: 90%;
+    background: radial-gradient(60% 55% at 38% 40%, rgba(232,181,92,0.20), transparent 70%),
+                radial-gradient(40% 40% at 78% 24%, rgba(253,84,6,0.14), transparent 72%);
+    pointer-events: none;
+    animation: hero-drift linear both; animation-timeline: scroll(root block); animation-range: 0 90vh;
+  }
+  @keyframes hero-drift { to { transform: translate3d(0, 14%, 0) scale(1.08); } }
+  .dark .poster--hero, .poster--hero { max-width: 18ch; }
+}
+@media (prefers-reduced-motion: reduce) { .hero__glow { animation: none } }
+
+/* ── category cards ─────────────────────────────────────────────────────── */
+@layer components {
+  .cat-card {
+    background: linear-gradient(150deg, rgba(73,54,28,0.55), rgba(26,16,12,0.75));
+    border: 1px solid rgba(187,123,35,0.3); border-radius: var(--radius-card);
+    padding: 22px 20px; transition: border-color 260ms ease, transform 260ms ease, background 260ms ease;
+  }
+  .cat-card:hover { border-color: rgba(253,84,6,0.55); transform: translateY(-3px);
+                    background: linear-gradient(150deg, rgba(90,66,34,0.6), rgba(30,19,13,0.8)); }
+}
+@media (prefers-reduced-motion: reduce) { .cat-card:hover { transform: none } }
+
+/* ── the track break: the rhythm change on a 14-section page ────────────── */
+@layer components {
+  .track-break { display: flex; align-items: center; gap: 22px; margin: 88px 0 72px; }
+  .track-break__rule { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,181,92,0.55), transparent); }
+  .track-break__name {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(13px, 1.5vw, 17px); text-transform: uppercase; letter-spacing: 0.22em;
+    color: var(--afia-gold-200); white-space: nowrap;
+  }
 }

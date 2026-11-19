@@ -2,7 +2,11 @@ import Image from "next/image";
 import { Btn, Eyebrow, WINNERS_HOME } from "@/components/ui";
 import Form from "@/components/Form";
 import Countdown from "@/components/Countdown";
-import Portrait from "@/components/Portrait";
+import TapedCard from "@/components/TapedCard";
+import Ribbon from "@/components/Ribbon";
+import Ankara from "@/components/Ankara";
+import TypedDate from "@/components/TypedDate";
+import Trophy from "@/components/Trophy";
 import { AFIA } from "@/lib/event";
 import { TRACKS } from "@/lib/data";
 import { CATEGORIES_2026, TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
@@ -22,15 +26,32 @@ const TASTER = [1, 4, 5, 8, 12, 14].map((n) => {
 export default function Home() {
   return (
     <>
-      {/* ── Hero: the phase, the date, the action ───────────────────────── */}
-      <section className="dark relative flex min-h-[720px] items-center pt-[88px] text-center" style={{ backgroundImage: "linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url(/img/Active-Hero-2026.png)", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="container py-20">
-          <Eyebrow>{AFIA.phaseLine} · {TOTAL_NOMINEES} nominees</Eyebrow>
-          <h1 className="mx-auto mt-6 max-w-5xl text-balance text-[length:var(--text-hero)]">Honouring Excellence.<br />Building<br /><span className="gold">Africa&apos;s Food Future.</span></h1>
-          <p className="display mt-6 text-[16px] font-medium text-white md:text-[24px]">{AFIA.dateLong} · {AFIA.time} · Online</p>
-          <p className="lede mx-auto mt-4 max-w-2xl text-white/85">The second edition of the African Food Influencers Awards. {TOTAL_NOMINEES} nominees from {TOTAL_COUNTRIES} countries, {AFIA.awards} awards, decided by an independent jury.</p>
-          <Countdown to={AFIA.startISO} passed="The AFIA 2026 winners are in." />
-          <div className="mt-8 flex flex-wrap justify-center gap-5"><Btn href="/nominees">See the nominees</Btn><Btn href="/2026-awards" variant="outline">How to watch</Btn></div>
+      {/* ── Hero: AFN's own poster, unrolled ───────────────────────────── */}
+      <section className="dark hero relative flex min-h-[760px] items-center overflow-hidden pt-[88px]" >
+        <Ankara side="left" />
+        <Ankara side="right" />
+        <div className="hero__glow" aria-hidden />
+        <div className="container grid items-center gap-10 py-20 lg:grid-cols-[1.35fr_0.65fr]">
+          <div>
+            <Eyebrow>{AFIA.phaseLine} · {TOTAL_NOMINEES} nominees</Eyebrow>
+            <h1 className="poster poster--hero mt-6">
+              Honouring excellence.<br />Building Africa&apos;s food future.
+            </h1>
+            <div className="mt-7"><Ribbon>{AFIA.edition}</Ribbon></div>
+            <p className="display mt-7 text-[18px] font-medium text-white md:text-[24px]">
+              <TypedDate text={`${AFIA.dateLong} · ${AFIA.time}`} /> · Online
+            </p>
+            <p className="lede mt-4 max-w-[52ch] text-white/85">
+              {TOTAL_NOMINEES} nominees from {TOTAL_COUNTRIES} countries. {AFIA.awards} awards.
+              Decided by an independent jury, with no public vote.
+            </p>
+            <Countdown to={AFIA.startISO} passed="The AFIA 2026 winners are in." />
+            <div className="mt-9 flex flex-wrap gap-5">
+              <Btn href="/nominees">See the nominees</Btn>
+              <Btn href="/2026-awards" variant="outline">How to watch</Btn>
+            </div>
+          </div>
+          <Trophy className="mx-auto hidden w-[210px] lg:block" />
         </div>
       </section>
 
@@ -76,14 +97,13 @@ export default function Home() {
             </div>
             <Btn href="/nominees">All {TOTAL_NOMINEES} nominees</Btn>
           </div>
-          <ul className="mt-10 grid gap-x-10 md:grid-cols-2">
-            {TASTER.map((n) => (
-              <li key={n.name} className="reveal flex items-center gap-5 border-t border-[color:var(--afia-grey-300)] py-5">
-                <Portrait name={n.name} photo={n.photo} brand={n.brand} size={56} />
-                <div className="min-w-0">
-                  <h3 className="text-[18px] normal-case tracking-normal text-black">{n.name}</h3>
-                  <p className="display mt-1 text-[12px] uppercase tracking-[0.07em] text-[color:var(--afia-gold-ink)]">{n.category} &middot; {n.country}</p>
-                </div>
+          <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-12">
+            {TASTER.map((n, i) => (
+              <li key={n.name} className="reveal w-[calc(50%-1rem)] max-w-[260px] md:w-[calc(33.333%-1.34rem)]">
+                <TapedCard name={n.name} photo={n.photo} brand={n.brand} caption={n.country} i={i} />
+                <p className="mt-3 text-center text-[12px] uppercase tracking-[0.08em] text-[color:var(--afia-gold-400)]">
+                  {n.category}
+                </p>
               </li>
             ))}
           </ul>

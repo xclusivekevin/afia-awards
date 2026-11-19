@@ -45,9 +45,10 @@ for (const name of names) {
 
 fs.writeFileSync(SRC, src);
 const orphans = files.filter((f) => !used.has(f));
+const withPhoto = (src.match(/, photo: "/g) || []).length;
 console.log(`${files.length} image file(s) in public/img/nominees`);
-console.log(`${set} nominee(s) now point at a photograph`);
-console.log(`${names.length - set} still show the placeholder`);
+console.log(`${withPhoto} of ${names.length} nominees point at a photograph (${set} changed by this run)`);
+console.log(`${names.length - withPhoto} still show the placeholder`);
 if (orphans.length) {
   console.log(`\n${orphans.length} file(s) matched no nominee. Check the spelling against`);
   console.log(`AFIA_2026_Nominee_Photos_Needed.md:`);

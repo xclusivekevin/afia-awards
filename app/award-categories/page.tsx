@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Ribbon from "@/components/Ribbon";
+import Ankara from "@/components/Ankara";
 import { TRACKS } from "@/lib/data";
 import { CATEGORIES_2026 } from "@/lib/nominees";
 import { AFIA } from "@/lib/event";
@@ -19,20 +21,25 @@ export default function Categories() {
   return (
     <>
       <PageHero title="Award Categories" sub="Fourteen awards across four tracks. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
-      <section className="dark section">
-        <div className="container space-y-14">
+      <section className="dark section relative overflow-hidden">
+        <Ankara side="left" />
+        <Ankara side="right" />
+        <div className="container space-y-20">
           {TRACKS.map((t) => (
             <div key={t.key} className="grid gap-8 lg:grid-cols-[320px_1fr]">
-              <div className="reveal">
+              <div className="reveal lg:sticky lg:top-[112px] lg:self-start">
                 <TrackIcon k={t.key} />
-                <h2 className="mt-5 text-[26px] text-white">{t.name}</h2>
-                <p className="mt-3 text-[14px] text-white/80">{t.blurb}</p>
+                <h2 className="poster mt-5 !text-[clamp(28px,3.4vw,46px)]">{t.name}</h2>
+                <div className="mt-4"><Ribbon>{t.categories.length} awards</Ribbon></div>
+                <p className="mt-5 max-w-[34ch] text-[15px] leading-relaxed text-white/75">{t.blurb}</p>
               </div>
-              <ul className="grid gap-4 sm:grid-cols-2">
+              {/* a track with an odd number of awards strands the last card in a
+                  2-column grid, so the last card spans the row instead */}
+              <ul className="grid gap-4 sm:grid-cols-2 [&>li:last-child:nth-child(odd)]:sm:col-span-2">
                 {t.categories.map((c) => {
                   n += 1;
                   return (
-                    <li key={c} className="card-dark reveal flex items-start gap-4 !p-6">
+                    <li key={c} className="cat-card reveal flex items-start gap-4">
                       <span className="display text-[24px] font-semibold leading-none text-[color:var(--afia-gold-500)]">{String(n).padStart(2, "0")}</span>
                       <div>
                         <h3 className="text-[17px] leading-[1.3] text-white">{c}</h3>

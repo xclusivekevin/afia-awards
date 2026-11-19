@@ -20,5 +20,12 @@
   --section-y: 96px; --section-y-mobile: 64px; --container: 1200px;
   --radius-pill: 999px; --radius-card: 16px; --radius-image: 12px; --radius-button: 4px; --radius-input: 4px;
   --shadow-card-light: 0 10px 30px rgba(0,0,0,0.08);
+
+  /* ── AFIA 2026 v2.0, sampled from AFN's own category posts (19 Nov 2026) ── */
+  --afia-field: #0B0705; --afia-field-warm: #1A100C; --afia-field-cool: #07080A; --afia-smoke: #0F1215;
+  --afia-gold-hi: #FFF3D6; --afia-gold-200: #FFDE98; --afia-gold-400: #E8B55C;
+  --afia-ribbon: #FD5406; --afia-ankara: #EFE3CE; --afia-tape: #E4D7B8; --afia-card: #FFFFFF;
+  --text-poster: clamp(40px, 7vw, 104px);
+
   --z-base: 0; --z-raised: 10; --z-nav: 50; --z-overlay: 100;
 }

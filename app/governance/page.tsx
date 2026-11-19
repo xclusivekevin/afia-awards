@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
-import Portrait from "@/components/Portrait";
+import TapedCard from "@/components/TapedCard";
+import Ribbon from "@/components/Ribbon";
 import { AFIA, SCORING, JURY_PUBLISHED, JURY_ROLLING, JURY_2026, JURY_2025 } from "@/lib/event";
 import { TOTAL_NOMINEES } from "@/lib/nominees";
 
@@ -83,7 +84,7 @@ export default function Governance() {
       {/* ── 2. The 2026 jury ────────────────────────────────────────────── */}
       <section className="dark section">
         <div className="container">
-          <h2 className="text-center text-[length:var(--text-h1)]">The <span className="gold">AFIA 2026</span> jury</h2>
+          <div className="text-center"><h2 className="poster mx-auto">The AFIA 2026 jury</h2><div className="mt-5 flex justify-center"><Ribbon>Independent</Ribbon></div></div>
 
           {JURY_PUBLISHED && JURY_2026.length > 0 ? (
             <>
@@ -94,15 +95,11 @@ export default function Governance() {
                   already under way.
                 </p>
               )}
-              <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {JURY_2026.map((j) => (
-                <div key={j.name} className="reveal flex items-start gap-5">
-                  <Portrait name={j.name} photo={j.photo} size={84} />
-                  <div>
-                    <h3 className="text-[19px] leading-tight text-white">{j.name}</h3>
-                    <p className="mt-1.5 text-[14px] text-white/70">{j.role}</p>
-                    <p className="display mt-2 text-[12px] uppercase tracking-[0.08em] text-[color:var(--afia-gold-500)]">{j.country}</p>
-                  </div>
+              <div className="mx-auto mt-12 grid max-w-4xl gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {JURY_2026.map((j, i) => (
+                <div key={j.name} className="reveal">
+                  <TapedCard name={j.name} photo={j.photo} caption={j.country} i={i} dir="jury" />
+                  <p className="mt-4 text-center text-[13px] leading-relaxed text-white/70">{j.role}</p>
                 </div>
               ))}
               </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Ribbon from "@/components/Ribbon";
 import { AFIA } from "@/lib/event";
 import { TRACKS } from "@/lib/data";
 import { CATEGORIES_2026, TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
@@ -81,7 +82,7 @@ export default function Awards2026() {
       {/* ── The fourteen, by track ──────────────────────────────────────── */}
       <section className="dark section">
         <div className="container">
-          <h2 className="text-center text-[length:var(--text-h2)]">The {AFIA.awards} awards, across {AFIA.tracks} tracks</h2>
+          <div className="text-center"><h2 className="poster mx-auto !text-[clamp(30px,4vw,58px)]">The {AFIA.awards} awards</h2><div className="mt-5 flex justify-center"><Ribbon>{AFIA.tracks} tracks</Ribbon></div></div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TRACKS.map((t) => (
               <div key={t.key} className="card-dark">
