@@ -1,45 +1,128 @@
-# AFIA 2026 update: three directions
+---
+venture: afn
+type: brief
+status: current
+up: '[[AFN Hub]]'
+tags: [afia, website, john, brainstorm]
+---
 
-John, 18 November 2026. Build folder: `Events/awards/site`.
-Checked against `Web Design/John/01_TASTE/Design_Register.md` (row C8 is this site; rows A12 to A24 are the recent Chinwe Zoe builds).
+# AFIA 2026 v3: the brainstorm
 
-## The job
+**19 November 2026.** Kevin's job, in his words: the four older pages brought into
+the new design; the hero line changed to "Celebrating The African Food Influencers
+This Year" with "African Food" keeping the mosaic treatment; the home page made
+"purely minimalistic and navigational"; a better top mobile menu taken from the
+component libraries; an AFN 100 link in the footer; then a whole-site visual
+review, a score, and the improvements implemented.
 
-The site is live and stale. It still says nominations are open, counts down to 1 November 2026 (a date that has passed), says thirteen awards, and credits CAPA. Kevin decided on 31 October that **CAPA is not the AFIA 2026 host and gets no credit anywhere**. Meanwhile the real 2026 edition is fully decided: 66 nominees, 14 categories, four tracks, jury only, online on Saturday 12 December.
+Brand guide wins (`Web Design/Design Guides/afia/afia-2026-design-system.md` v2.0),
+so palette and type do not move. What is being chosen here is **layout, menu and
+motion**, checked against `01_TASTE/Design_Register.md` rows C01 to C17.
 
-Two new things have to be designed: a **nominee directory that holds 66 names** and a **jury page**. Everything else is correction.
+---
 
-## The brand guide wins
+## What the captures said
 
-`Web Design/Design Guides/afia/` v1.0 is signed off, so the palette (black field, gold `#CC983D`, on-white gold `#A8792A`), Clash Display + Roboto, and the card language do not change. The variety rule applies to the **layouts**, not the colours.
+Opened as images, not as notes:
 
-## Direction A: "The Index" (chosen)
+- **`height/awwwards-kluster-collectif`** (overview.jpg and overview_mobile.jpg).
+  A collective's homepage as **one screen of doors**: a short manifesto in heavy
+  display type, a ruled menu column, then a row of cards, each one word plus one
+  real photograph. On phone the same doors become a staggered two-column wall.
+  Scored 7/10 in the library. This is the literal answer to "minimalistic and
+  navigational" and nothing in the register has used it.
+- **`height/gsap-paradigm-festival`** (overview.jpg). A festival home that is only
+  three things: poster hero, a justified wall of names, a newsletter line. Proof
+  that an events homepage can be short and still feel complete. The date set
+  directly above the name is worth taking.
+- **`height/awwwards-nameless-festival`** (overview.jpg). The home is a two-panel
+  chooser, each panel a full-height door with name, date, place and one button.
+  Navigational to the point of having no content at all. Too few doors for AFIA's
+  eleven pages, but it proves the door can be the whole page.
+- **`height/awwwards-zeroz-brand-site`**. Its lesson card already states Kevin's
+  own rule: a long story works as labelled chapters, each with one line and a
+  button to its full page.
 
-From `02_LIBRARY/sites/height/awwwards-offfforum/lineup/` and `/schedule/` (images opened 18 Nov), plus the "Hosts" list in `awwwards-thessaloniki-sto-piato`.
+## What the register said
 
-A sticky numbered rail of the 14 categories down the left; the nominees as ruled rows on the right. Each row is name, country tag, and a small square portrait at the far right, exactly the way OFFF's schedule hangs a thumbnail off each ruled row. Alternating type weight line by line, as the OFFF lineup does.
+Rows C16 and C17 are this same site. C17 spent: the taped photo card, the ankara
+band, the orange ribbon, the gold gradient poster type, the typed date, the drawn
+trophy, the type-as-window hero. Those are the brand now and they stay.
 
-- **Why it wins:** it is the only one of the three that stays readable at 66 names and still shows faces. The rail gives the page architecture, which is the thing `/award-categories` was criticised for lacking ("the thirteen categories are a spreadsheet").
-- **Against the register:** no AFN or SD build has used a sticky index rail with ruled rows. The recent builds used pinned heroes, split heroes, record-book and shutter layouts. No repeat.
+Never used anywhere in the register: **the door wall**, and menu entry **2 Card
+Nav**. Used and therefore closed: 1 Pill Nav, 4 Staggered Menu, 8 mega panel,
+12 Dynamic Island, 15 and 16 bottom bar and sheet, 17 transport bar, 18 Line
+Sidebar, 23 Bubble Menu.
 
-## Direction B: "The Envelope"
+---
 
-From `awwwards-dick-clark-productions` (card over a real photo) and the gold envelope the host opens on the night.
+## Three directions
 
-Each category is a wide gold-edged band; nominees sit inside as four-up portrait cards.
+### Direction A: "The door wall"  ← CHOSEN
 
-- **Why not:** it is the card grid the site already uses on three other pages, so it adds nothing new, and 14 bands of 4 to 6 cards is an enormous page with no way to navigate it.
+Rebuilt from `awwwards-kluster-collectif`. The homepage is the hero and then one
+wall of doors, nothing else. Each door is the existing taped card language opened
+out to a full card: a real photograph, the destination as one word set large, one
+short line saying what is behind it. Desktop is a three-column wall whose first
+door spans two columns, so there is never a hole. Phone is the capture's staggered
+two-column wall.
 
-## Direction C: "The Table"
+- **Why it wins:** it is exactly what Kevin asked for, it comes from a studied
+  capture rather than my own head, it gives the eleven real pages somewhere to be
+  reached from, and it reuses the site's own card language so it does not read as
+  a bolted-on section.
+- **Risk:** doors with weak photographs look like a stock grid. Mitigated by
+  opening every image first.
 
-From the `awwwards-thessaloniki-sto-piato` "Hosts" list: a centred two-column list, name left, tag right, no photographs at all.
+### Direction B: "The chooser"
 
-- **Why not:** it is the most elegant and it scales best, but Kevin is gathering nominee photographs to send. A directory with nowhere to put them is the wrong skeleton for what he is about to hand over.
+From `awwwards-nameless-festival`. The homepage is two full-height halves, 2026
+and 2025, each with its date and one button. Everything else lives behind the
+menu.
 
-## Chosen: A, with B's band as the category header inside it.
+- **Rejected:** two doors cannot carry eleven pages, and it hides the nominees,
+  which are the reason anyone is on the site this month. It also makes the menu
+  the only navigation, which pushes the whole job onto the one component Kevin
+  has just said is not good enough.
 
-## The jury, and a decision I am making for Kevin
+### Direction C: "The poster and the wall"
 
-The jury is **not announced until Thursday 26 November** (rollout plan, week 4). Of 14 invitations I can see, three are provably accepted (Ameyaw Debrah, Tshegofatso Stone, Dr Robert Fungo) and one is a refusal (Maryam Almansur). So the page ships the jury *process*, which is publishable today and is the real search and AI-citation asset, and the roster sits behind one boolean that renders names and portraits the moment Kevin says go.
+From `gsap-paradigm-festival`. Hero poster, then the full justified wall of all
+sixty-seven nominee names across the width, then the sign-up line. Three
+sections, no cards at all.
 
-Publishing three of fourteen, or publishing anyone before AFN announces, is the kind of error that cannot be taken back.
+- **Rejected:** it is the most beautiful of the three and the least navigational.
+  It duplicates `/nominees` on the homepage and still leaves the awards, the jury,
+  the ceremony and the archive unreachable except through the menu. Kevin asked
+  for navigational first, minimal second.
+
+---
+
+## The menu
+
+**Entry 2, Card Nav** (React Bits, MIT with Commons Clause; rebuilt in our own
+code, no library code ships). A bar button drops a panel of three cards, each a
+group title with its links. Chosen because:
+
+- It is a **top** menu, which is what Kevin asked for.
+- It turns eleven flat links into three groups a thumb can read.
+- The card is already this site's native object, so the menu stops being template
+  chrome and joins the poster.
+- It obeys the 23 October ruling: plain, links only, set large, no photographs
+  behind the words and no numbers beside them. The mark at the top is larger than
+  the bar's.
+- Never used in any build in the register.
+
+Rejected: entry 13 Liquid Morph (too small a panel for eleven links), entry 6
+Resizable Navbar (a desktop pattern, and the bar already hides over the hero),
+entry 3 Gooey (playful, wrong for an awards jury page).
+
+---
+
+## Motion
+
+Already standard on this build and kept: ankara drift on scroll-timeline, the hero
+glow at a second depth, the typed date, the drawn trophy. Added for the doors:
+each door's photograph scales slowly behind a fixed frame as the wall enters, and
+the door's rule wipes across on hover. Reduced motion stops all of it and leaves
+every door complete and readable.

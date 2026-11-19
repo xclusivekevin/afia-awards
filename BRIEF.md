@@ -149,3 +149,84 @@ numbered down it.
   unbroken from hero to footer.
 - Social links move from African Food Network's accounts to the awards' own.
 - Ankara shows on phone, where it was hidden entirely.
+
+---
+
+# BRIEF: AFIA 2026 site, v3 (the door wall)
+
+John, 19 November 2026, second pass of the day. Design system unchanged:
+`Web Design/Design Guides/afia/afia-2026-design-system.md` v2.0. The brand guide wins, so
+this pass changes **layout, menu and the four plain pages only**. Directions and the
+reasons for the choice are in `BRAINSTORM.md`. Design Register row **C18**.
+
+## What Kevin asked for
+
+1. The four older pages (`/about`, `/press`, `/contact`, `/winners`) brought into the new design.
+2. The hero line: "Celebrating The African Food Influencers This Year", with "African Food"
+   keeping the mosaic type-as-window treatment.
+3. The home page made purely minimalistic and navigational.
+4. A better top mobile menu, taken from the component libraries.
+5. An AFN 100 link in the footer.
+6. A whole-site visual review with a score, then the improvements implemented.
+
+## The capture each page is rebuilt from
+
+Opened as images tonight, not read about.
+
+| Page | Capture | What is taken |
+|---|---|---|
+| Home, below the hero | `height/awwwards-kluster-collectif` overview.jpg and overview_mobile.jpg | the homepage as one wall of doors: one word, one real photograph, one line per door; a staggered two-column wall on phone |
+| Home hero | kept from v2 (`height/video-paragon`, `height/awwwards-champions-for-good`) | type as a window onto the nominee mosaic, with small connector lines above and below |
+| `/winners` | `height/awwwards-kluster-collectif` | the same door, one per edition, with a real photograph instead of a favicon |
+| `/about`, `/press`, `/contact` | `height/gsap-paradigm-festival` | the short certain page: a poster head, then only what the page is for |
+
+Nothing from a studied site ships. No asset, no copy, no code.
+
+## Components, and the section each serves
+
+| Component | Library and entry | Section it serves | Licence |
+|---|---|---|---|
+| **Card Nav** | React Bits, menu entry **2** of `02_LIBRARY/sections/menus_from_libraries.md` | the phone menu: the bar button drops three grouped cards | MIT + Commons Clause, rebuilt in our own code |
+| **Door card** (new, `Door.tsx`) | rebuilt from the Kluster capture, in the site's existing taped-card language | the home door wall, and the `/winners` edition doors | own code |
+| Taped card | own, from AFN's category posters | kept on `/nominees`, `/governance` | own code |
+| Ankara band, ribbon, poster type, typed date, drawn trophy | own, v2 | kept everywhere | own code |
+
+Checked against the Design Register: the door wall and Card Nav have not been used in any
+build. Pill Nav, Staggered Menu, the mega panel, Dynamic Island, the bottom bar and sheet,
+the transport bar, Line Sidebar and Bubble Menu are all spent and were not considered.
+
+## The doors, and the photograph behind each
+
+Every image was opened before it was chosen (R-0221: an image carrying words is copy, and
+no text scan can read it).
+
+| Door | Goes to | Photograph |
+|---|---|---|
+| The nominees | `/nominees` | `nominee-wall.webp`, the mosaic of all sixty-seven faces |
+| The awards | `/award-categories` | `AFIA.png`, a trophy being handed over |
+| How winners are chosen | `/governance` | `About-AFIA-2026.png`, the lectern |
+| The ceremony | `/2026-awards` | `About-AFIA.png`, the red carpet |
+| Last year's class | `/winners/2025-winners` | `Chef-Hilda-Baci.jpg`, a real 2025 winner |
+
+**Refused, and why:** `AFIA-Partners.png` carries "Empower. Elevate. Collaborate." printed
+on the screen inside the photograph, which uses a banned word. `Nominate.png` and
+`Nomination.png` both read "NOMINATIONS NOW OPEN", which contradicts every page on the site.
+All three stay out until replacements arrive.
+
+## What leaves the homepage
+
+Not deleted, moved to the page that already owns it, so the doors have somewhere to lead:
+"What is AFIA" and the three principles to `/about`; the four tracks to `/award-categories`;
+the nominee taster to `/nominees`; the 2025 winner grid to `/winners/2025-winners`; the
+ceremony detail to `/2026-awards`. The sign-up stays, reduced to a single line.
+
+## Rules this pass is held to
+
+- No counted headlines and no counter rows anywhere (R-0018, salience 10).
+- No eyebrow over a hero line.
+- Every column earns its height; no grid holes, no dead columns.
+- One H1 per page; the site chrome on every page.
+- Motion: scroll-driven, more than one depth, one text treatment that is not a fade, one
+  thing drawn in code. Reduced motion leaves every page complete.
+- PDOS in full before Kevin sees it, scored on the Quality Ladder first, lowest dimension
+  fixed rather than reported.

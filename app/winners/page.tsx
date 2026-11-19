@@ -1,18 +1,60 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
 import Breadcrumbs from "@/components/Breadcrumbs";
-export const metadata: Metadata = { title: "Winners Archive" };
+import Door from "@/components/Door";
+import Ankara from "@/components/Ankara";
+import { AFIA } from "@/lib/event";
+
+export const metadata: Metadata = { title: "Winners Archive", description: "A permanent record of every AFIA honouree, edition by edition." };
+
 export default function Winners() {
   return (
     <>
       <Breadcrumbs trail={[["Winners archive", "/winners"]]} />
-      <PageHero title="Winners Archive" sub={<><p className="text-white">A permanent record of excellence in Africa&apos;s food ecosystem.</p><p className="mt-3 font-[family-name:var(--font-body)] text-[15px]">The African Food Influencers Awards archive documents every honouree from every edition of AFIA, building, year by year, the most comprehensive public record of leadership in African food culture.</p></>} />
-      <section className="section"><div className="container grid gap-8 md:grid-cols-2">
-        <Link href="/winners/2025-winners" className="card-light block p-10 text-center transition hover:shadow-lg"><Image src="/img/Awards-Favicon.png" alt="" width={80} height={80} className="mx-auto" /><h2 className="mt-5 text-[28px]">AFIA 2025</h2><p className="display mt-1 text-[14px] text-[color:var(--afia-gold-ink)]">Inaugural Edition</p><p className="mt-4 text-[14px] underline">Click to view</p></Link>
-        <div className="card-light p-10 text-center opacity-70"><Image src="/img/Awards-Favicon.png" alt="" width={80} height={80} className="mx-auto" /><h2 className="mt-5 text-[28px]">AFIA 2026</h2><p className="display mt-1 text-[14px] text-[color:var(--afia-gold-ink)]">Second Edition</p><p className="mt-4 text-[14px]">Winners announced Saturday 12 December 2026</p></div>
-      </div></section>
+      <PageHero
+        title="The winners archive"
+        sub="A permanent record of leadership in African food culture, built edition by edition."
+        image="/img/About-AFIA.png"
+      />
+
+      {/* Two doors, same object as the homepage wall. The old page put the same
+          tiny favicon on two white plates and asked people to "click to view". */}
+      <section className="dark section relative overflow-hidden">
+        <Ankara side="left" />
+        <Ankara side="right" />
+        <div className="container relative z-[2]">
+          <h2 className="sr-only">Editions</h2>
+          <div className="door-wall">
+            <Door
+              title="AFIA 2025"
+              line="The inaugural class: every honouree of the first edition, with what each was recognised for."
+              href="/winners/2025-winners"
+              photo="/img/AFIA.png"
+              alt="An AFIA trophy being handed to a winner on stage"
+              wide
+              priority
+            />
+            <Door
+              title="AFIA 2025 nominees"
+              line="The full first-edition slate, award by award."
+              href="/2025-nominees"
+              photo="/img/Chef-Neo-Nontso.webp"
+              alt="Chef Neo Nontso, an AFIA 2025 winner"
+            />
+          </div>
+
+          {/* this edition is not an archive entry yet, so it is stated as a line
+              rather than dressed up as a third door that leads nowhere */}
+          <dl className="ruled mt-12">
+            <div className="ruled-row">
+              <dt className="ruled-row__k">AFIA {new Date(AFIA.startISO).getFullYear()}</dt>
+              <dd className="ruled-row__v">
+                The {AFIA.edition.toLowerCase()}. Winners are read out on {AFIA.dateLong} and join the archive the same night.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
     </>
   );
 }

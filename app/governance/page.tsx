@@ -4,7 +4,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import TapedCard from "@/components/TapedCard";
 import Ribbon from "@/components/Ribbon";
 import { AFIA, SCORING, JURY_PUBLISHED, JURY_ROLLING, JURY_2026, JURY_2025 } from "@/lib/event";
-import { TOTAL_NOMINEES } from "@/lib/nominees";
 
 export const metadata: Metadata = {
   title: "The Jury and How Winners Are Chosen",
@@ -74,7 +73,7 @@ export default function Governance() {
       />
 
       {/* ── 1. The three dimensions. The heart of the page. ──────────────── */}
-      <section className="section">
+      <section className="dark section relative overflow-hidden">
         <div className="container">
           <h2 className="text-[length:var(--text-h1)]">What every juror is asked</h2>
           <p className="measure mt-5">
@@ -85,9 +84,9 @@ export default function Governance() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {SCORING.map((s) => (
               <div key={s.n} className="reveal rounded-[16px] border border-[color:var(--color-card-border)] p-7">
-                <h3 className="text-[20px] normal-case tracking-normal text-black">{s.name}</h3>
+                <h3 className="text-[20px] normal-case tracking-normal text-white">{s.name}</h3>
                 <p className="mt-3 text-[14px]">{s.what}</p>
-                <p className="mt-4 border-t border-[color:var(--afia-grey-300)] pt-4 text-[14px] italic text-[color:var(--afia-gold-ink)]">{s.q}</p>
+                <p className="mt-4 border-t border-[rgba(204,152,61,0.3)] pt-4 text-[14px] italic ink-gold">{s.q}</p>
               </div>
             ))}
           </div>
@@ -149,16 +148,16 @@ export default function Governance() {
       </section>
 
       {/* ── 3. Timeline ─────────────────────────────────────────────────── */}
-      <section className="section">
+      <section className="dark section relative overflow-hidden">
         <div className="container">
           <h2 className="text-[length:var(--text-h1)]">The 2026 timetable</h2>
-          <ol className="mt-10 border-t border-[color:var(--afia-grey-300)]">
+          <ol className="mt-10 border-t border-[rgba(204,152,61,0.3)]">
             {TIMELINE.map(([k, v, done]) => (
-              <li key={k} className="ruled-row flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-[color:var(--afia-grey-300)] py-5">
-                <span className={`display w-[22px] shrink-0 text-[15px] ${done ? "text-[color:var(--afia-gold-ink)]" : "text-[color:var(--afia-grey-300)]"}`} aria-hidden>
+              <li key={k} className="ruled-row flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-[rgba(204,152,61,0.3)] py-5">
+                <span className={`display w-[22px] shrink-0 text-[15px] ${done ? "ink-gold" : "text-white/35"}`} aria-hidden>
                   {done ? "✓" : "·"}
                 </span>
-                <span className="display min-w-[200px] flex-1 text-[18px] normal-case tracking-normal text-black">{k}</span>
+                <span className="display min-w-[200px] flex-1 text-[18px] normal-case tracking-normal text-white">{k}</span>
                 <span className="text-[15px]">{v}</span>
                 <span className="sr-only">{done ? "Completed" : "Upcoming"}</span>
               </li>
@@ -168,7 +167,7 @@ export default function Governance() {
       </section>
 
       {/* ── 4. Eligibility and enquiries ────────────────────────────────── */}
-      <section className="section pt-0">
+      <section className="dark section relative overflow-hidden pt-0">
         <div className="container prose max-w-3xl">
           <h2>Who can be nominated</h2>
           <p>
@@ -178,17 +177,17 @@ export default function Governance() {
             African restaurants outside Africa counts. An African food brand on foreign shelves counts.
           </p>
           <p>
-            {TOTAL_NOMINEES} nominees were researched and approved for the {AFIA.awards} categories of the {AFIA.edition.toLowerCase()}.
-            Every nominee was contacted before the list was published.
+            Every nominee on this year's slate was researched, approved and contacted before the list
+            was published.
           </p>
           <h3>Enquiries</h3>
           <p>
             Questions about the process may be sent to{" "}
-            <a href={`mailto:${AFIA.email}`} className="text-[color:var(--afia-gold-ink)] underline">{AFIA.email}</a>.
+            <a href={`mailto:${AFIA.email}`} className="ink-gold underline">{AFIA.email}</a>.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Btn href="/nominees">See who is nominated</Btn>
-            <Btn href="/award-categories" variant="outline-light">Every award, explained</Btn>
+            <Btn href="/award-categories" variant="outline">Every award, explained</Btn>
           </div>
         </div>
       </section>

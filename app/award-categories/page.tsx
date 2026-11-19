@@ -22,7 +22,7 @@ export default function Categories() {
   return (
     <>
       <Breadcrumbs trail={[["Award categories", "/award-categories"]]} />
-      <PageHero title="Award Categories" sub="Four tracks, from the kitchen to the food system. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
+      <PageHero title="Award Categories" sub="From the kitchen to the food system. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
       <section className="dark section relative overflow-hidden">
         <Ankara side="left" />
         <Ankara side="right" />
@@ -37,7 +37,7 @@ export default function Categories() {
               </div>
               {/* a track with an odd number of awards strands the last card in a
                   2-column grid, so the last card spans the row instead */}
-              <ul className="grid gap-4 sm:grid-cols-2 [&>li:last-child:nth-child(odd)]:sm:col-span-2">
+              <ul className="cat-grid grid gap-4 sm:grid-cols-2">
                 {t.categories.map((c) => {
                   n += 1;
                   return (

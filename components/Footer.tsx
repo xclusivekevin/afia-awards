@@ -25,6 +25,7 @@ const COLUMNS: [string, [string, string, boolean?][]][] = [
     ["Press and media", "/press"],
   ]],
   ["African Food Network", [
+    ["The AFN 100", "https://afrifoodnetwork.com/afn-100/", true],
     ["AFN", "https://afrifoodnetwork.com/", true],
     ["African recipes", "https://afrifoodnetwork.com/recipes/", true],
     ["Jollof, country by country", "https://afrifoodnetwork.com/food/dishes/jollof-rice/", true],

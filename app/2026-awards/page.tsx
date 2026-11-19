@@ -40,7 +40,7 @@ export default function Awards2026() {
       </PageHero>
 
       {/* ── How to watch. The audience action this page exists for. ─────── */}
-      <section className="section">
+      <section className="dark section relative overflow-hidden">
         <div className="container grid gap-10 lg:grid-cols-[1fr_1fr]">
           <div>
             <h2 className="text-[length:var(--text-h1)]">How to watch</h2>
@@ -48,43 +48,41 @@ export default function Awards2026() {
               AFIA 2026 is online and free. {AFIA.watchHow}
             </p>
             <p className="mt-4">
-              The winners of all {AFIA.awards} awards are read in one sitting, each with a nominee reel and a
-              message from the winner. The AFN 100 follows the next day, on {AFIA.afn100Published}.
+              Every winner is read out in one sitting, each with a nominee reel and a message
+              from the winner. The AFN 100 follows the next day, on {AFIA.afn100Published}.
             </p>
           </div>
           <dl className="grid gap-px overflow-hidden rounded-[16px] border border-[color:var(--color-card-border)] bg-[color:var(--color-card-border)] sm:grid-cols-2">
             {([["Date", AFIA.dateLong], ["Time", AFIA.time], ["Where", `${AFIA.format} · ${AFIA.venueName}`], ["Price", AFIA.price]] as [string, string][]).map(([k, v]) => (
               <div key={k} className="bg-white p-6">
-                <dt className="display text-[12px] uppercase tracking-[0.1em] text-[color:var(--afia-gold-ink)]">{k}</dt>
+                <dt className="display text-[12px] uppercase tracking-[0.1em] ink-gold">{k}</dt>
                 <dd className="mt-2 text-[17px] text-black">{v}</dd>
               </div>
             ))}
             <div className="bg-white p-6 sm:col-span-2">
-              <dt className="display text-[12px] uppercase tracking-[0.1em] text-[color:var(--afia-gold-ink)]">Around the world</dt>
-              <dd className="mt-2 text-[15px]">{AFIA.timeZones}</dd>
+              <dt className="display text-[12px] uppercase tracking-[0.1em] ink-gold">Around the world</dt>
+              <dd className="mt-2 text-[15px] text-black">{AFIA.timeZones}</dd>
             </div>
           </dl>
         </div>
       </section>
 
       {/* ── Eligibility ─────────────────────────────────────────────────── */}
-      <section className="section pt-0">
-        <div className="container max-w-4xl">
-          <h2 className="text-[length:var(--text-h2)]">Who is eligible</h2>
-          <p className="mt-4">
-            AFIA 2026 is open to anyone of African descent, anywhere in the world, whose work promotes African
-            food and culture. Work may be based outside the continent provided its impact is demonstrably
-            connected to African food culture, African food industries, or the African diaspora food community.
-            A chain of African restaurants outside Africa counts. An African food brand on foreign shelves counts.
-          </p>
-          <p className="mt-4">Nomination is free and open. Winning cannot be bought.</p>
+      <section className="dark section relative overflow-hidden pt-0">
+        <div className="container">
+          <h2 className="poster !text-[clamp(26px,3.2vw,42px)]">Who is eligible</h2>
+          <dl className="ruled mt-9">
+            <div className="ruled-row"><dt className="ruled-row__k">Who</dt><dd className="ruled-row__v">Anyone of African descent, anywhere in the world, whose work promotes African food and culture.</dd></div>
+            <div className="ruled-row"><dt className="ruled-row__k">Where</dt><dd className="ruled-row__v">Work may be based outside the continent as long as its impact is demonstrably connected to African food culture, African food industries or the African diaspora food community. A chain of African restaurants outside Africa counts. An African food brand on foreign shelves counts.</dd></div>
+            <div className="ruled-row"><dt className="ruled-row__k">Cost</dt><dd className="ruled-row__v">Nomination is free and open. Winning cannot be bought.</dd></div>
+          </dl>
         </div>
       </section>
 
       {/* ── The fourteen, by track ──────────────────────────────────────── */}
       <section className="dark section">
         <div className="container">
-          <div className="text-center"><h2 className="poster mx-auto !text-[clamp(30px,4vw,58px)]">The awards</h2><div className="mt-5 flex justify-center"><Ribbon>Four tracks</Ribbon></div></div>
+          <div className="text-center"><h2 className="poster mx-auto !text-[clamp(30px,4vw,58px)]">The awards</h2><div className="mt-5 flex justify-center"><Ribbon>By track</Ribbon></div></div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TRACKS.map((t) => (
               <div key={t.key} className="card-dark">

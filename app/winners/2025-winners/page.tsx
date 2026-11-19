@@ -10,11 +10,11 @@ export default function Winners2025() {
     <>
       <PageHero title="AFIA Winners" sub="The inaugural class, 2025" image="/img/Active-2026-Hero.png" />
       <section className="dark section">
-        <div className="container grid gap-6 md:grid-cols-2 lg:grid-cols-3">{WINNERS_2025.map((w) => (
+        <div className="container win-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">{WINNERS_2025.map((w) => (
           <article key={w.name} className="card-dark reveal flex flex-col">
             <p className="display text-[13px] text-[color:var(--afia-gold-500)]">{w.category}</p>
             {w.kind === "brand" ? (
-              <div className="mt-4 flex aspect-[4/3] w-full items-center justify-center rounded-xl bg-[rgba(187,123,35,0.12)] p-8">
+              <div className="mt-4 flex aspect-[4/5] w-full items-center justify-center rounded-xl bg-[rgba(187,123,35,0.12)] p-8">
                 {w.image ? <Image src={`/img/${w.image}`} alt={`${w.name} logo`} width={320} height={200} sizes="320px" quality={90} className="max-h-full w-auto object-contain" /> : <Image src="/img/Awards-Favicon.png" alt="" width={72} height={72} />}
               </div>
             ) : w.image ? (
