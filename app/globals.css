@@ -219,6 +219,7 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
     -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 4px 22px rgba(232,181,92,0.22));
     max-width: 16ch;
+    text-wrap: balance;
   }
   .rail__item {
     display: flex; gap: 12px; align-items: baseline;
@@ -261,6 +262,7 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
   }
   @keyframes hero-drift { to { transform: translate3d(0, 14%, 0) scale(1.08); } }
   .dark .poster--hero, .poster--hero { max-width: 18ch; }
+  .dark h1.poster.mx-auto, h1.poster.mx-auto { max-width: 22ch; }
 }
 @media (prefers-reduced-motion: reduce) { .hero__glow { animation: none } }
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Ankara from "./Ankara";
 import type { ReactNode } from "react";
 export function Btn({ href, children, variant = "primary", className = "" }: { href: string; children: ReactNode; variant?: "primary" | "outline" | "outline-light"; className?: string }) {
   const ext = /^(https?:|mailto:|#)/.test(href); const cls = `btn btn--${variant} ${className}`;
@@ -8,8 +9,18 @@ export function Eyebrow({ children, light }: { children: ReactNode; light?: bool
 /** Dark hero band for inner pages */
 export function PageHero({ eyebrow, title, sub, children, image = "/img/Active-Hero-2026.png" }: { eyebrow?: string; title: ReactNode; sub?: ReactNode; children?: ReactNode; image?: string }) {
   return (
-    <section className="dark relative flex min-h-[420px] items-center pt-[88px] text-center" style={{ backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.75)), url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div className="container py-16">{eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}<h1 className="mx-auto mt-5 max-w-4xl text-[length:var(--text-h1)]">{title}</h1>{sub && <div className="lede mx-auto mt-5 max-w-2xl text-white/85">{sub}</div>}{children && <div className="mt-8 flex flex-wrap justify-center gap-4">{children}</div>}</div>
+    <section
+      className="dark relative flex min-h-[460px] items-center overflow-hidden pt-[88px] text-center"
+      style={{ backgroundImage: `linear-gradient(180deg, rgba(26,16,12,0.55), rgba(7,8,10,0.86)), url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
+    >
+      <Ankara side="left" />
+      <Ankara side="right" />
+      <div className="container py-16">
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <h1 className="poster mx-auto mt-5 !text-[clamp(32px,5vw,68px)]">{title}</h1>
+        {sub && <div className="lede mx-auto mt-6 max-w-2xl text-white/85">{sub}</div>}
+        {children && <div className="mt-8 flex flex-wrap justify-center gap-4">{children}</div>}
+      </div>
     </section>
   );
 }
