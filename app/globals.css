@@ -170,9 +170,10 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
 /* ── AFIA 2026 v2.0: ankara, ribbon, taped cards ────────────────────────── */
 @layer components {
   /* the border band drifts at a tenth of scroll speed: the second depth */
-  .ankara { opacity: 0.32; background-repeat: repeat-y; background-size: 18px 120px;
+  .ankara { opacity: 0.32; background-repeat: repeat-y; background-size: 10px 68px;
             animation: ankara-drift linear both; animation-timeline: scroll(root block); }
   @keyframes ankara-drift { from { transform: translateY(0); } to { transform: translateY(-120px); } }
+  @media (min-width: 1024px) { .ankara { background-size: 18px 120px; } }
 
   .ribbon { display: inline-flex; align-items: stretch; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); }
   .ribbon__body {
@@ -365,3 +366,53 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
   @keyframes live-pulse { 70% { box-shadow: 0 0 0 10px rgba(253,84,6,0); } 100% { box-shadow: 0 0 0 0 rgba(253,84,6,0); } }
 }
 @media (prefers-reduced-motion: reduce) { .live-dot { animation: none } }
+
+/* ── Footer, from height/awwwards-palomino ──────────────────────────────── */
+@layer components {
+  .foot-head {
+    font-family: var(--font-display); font-weight: 500; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.18em; color: var(--afia-gold-200);
+  }
+  .foot-link {
+    font-size: 15px; color: rgba(255,255,255,0.72);
+    transition: color 200ms ease, padding-left 220ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .foot-link:hover { color: #fff; padding-left: 6px; }
+  .social-dot {
+    display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid rgba(239,227,206,0.3); color: var(--afia-gold-200);
+    transition: transform 240ms cubic-bezier(0.22,1,0.36,1), background 240ms ease, color 240ms ease, border-color 240ms ease;
+  }
+  .social-dot:hover { transform: translateY(-4px); background: var(--afia-ribbon); color: #fff; border-color: var(--afia-ribbon); }
+  .foot-mark {
+    margin: 0; width: 100%; text-align: center; user-select: none;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(96px, 27vw, 420px); line-height: 0.78; letter-spacing: -0.045em;
+    background-image: url("/img/nominee-wall.webp");
+    background-size: clamp(420px, 46vw, 760px) auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    opacity: 0.4;
+    animation: wall-drift 54s linear infinite;
+    mask-image: linear-gradient(to bottom, #000 42%, transparent 94%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 94%);
+  }
+}
+@media (prefers-reduced-motion: reduce) { .foot-mark { animation: none } .foot-link:hover { padding-left: 0 } .social-dot:hover { transform: none } }
+
+/* ── The bar ────────────────────────────────────────────────────────────── */
+@layer components {
+  .site-bar { transition: background-color 320ms ease, backdrop-filter 320ms ease, box-shadow 320ms ease; }
+  .site-bar::after {
+    content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(239,227,206,0.5), transparent);
+    opacity: 0; transition: opacity 320ms ease;
+  }
+  .site-bar--stuck {
+    background: rgba(18, 11, 7, 0.82);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  }
+  .site-bar--stuck::after { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .site-bar { transition: none } }

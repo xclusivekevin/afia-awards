@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import NomineeIndex from "@/components/NomineeIndex";
 import Ankara from "@/components/Ankara";
 import { CATEGORIES_2026, TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
@@ -37,6 +38,7 @@ export default function Nominees() {
 
   return (
     <>
+      <Breadcrumbs trail={[["The 2026 nominees", "/nominees"]]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
 
       <PageHero

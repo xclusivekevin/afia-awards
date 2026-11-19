@@ -27,7 +27,7 @@ export default function Ankara({ side = "left" }: { side?: "left" | "right" }) {
   return (
     <div
       aria-hidden
-      className={`ankara pointer-events-none absolute inset-y-0 ${side === "left" ? "left-0" : "right-0"} hidden w-[18px] lg:block`}
+      className={`ankara pointer-events-none absolute inset-y-0 ${side === "left" ? "left-0" : "right-0"} w-[10px] lg:w-[18px]`}
       style={{ backgroundImage: `url("data:image/svg+xml,${TILE}")` }}
     />
   );

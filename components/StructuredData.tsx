@@ -17,7 +17,8 @@ export default function StructuredData() {
       name: "African Food Influencers Awards", alternateName: "AFIA", url: SITE,
       logo: `${SITE}/img/Awards-Logo-01.png`, email: AFIA.email,
       parentOrganization: { "@type": "Organization", name: "African Food Network", url: "https://afrifoodnetwork.com" },
-      sameAs: ["https://instagram.com/afrifoodnet", "https://facebook.com/africanfoodnetwork", "https://x.com/afrifoodnet", "https://tiktok.com/@afrifoodnet"],
+      // the awards' own accounts, not African Food Network's (Kevin, 19 Nov 2026)
+      sameAs: ["https://instagram.com/afrifoodawards", "https://tiktok.com/@afrifoodawards", "https://x.com/afrifoodawards"],
     },
     { "@context": "https://schema.org", "@type": "WebSite", name: "African Food Influencers Awards", url: SITE },
     {

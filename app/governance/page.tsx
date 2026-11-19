@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import TapedCard from "@/components/TapedCard";
 import Ribbon from "@/components/Ribbon";
 import { AFIA, SCORING, JURY_PUBLISHED, JURY_ROLLING, JURY_2026, JURY_2025 } from "@/lib/event";
@@ -44,8 +45,26 @@ export default function Governance() {
     ].map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
 
+  // the jury as named people, so an answer engine can say who decides AFIA
+  const jurySchema = JURY_PUBLISHED && JURY_2026.length ? {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "AFIA 2026 jury",
+    parentOrganization: { "@type": "Organization", name: AFIA.organiser, url: AFIA.organiserUrl },
+    member: JURY_2026.map((j) => ({
+      "@type": "Person",
+      name: j.name,
+      jobTitle: j.role,
+      nationality: { "@type": "Country", name: j.country },
+    })),
+  } : null;
+
   return (
     <>
+      {jurySchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jurySchema) }} />
+      )}
+      <Breadcrumbs trail={[["Jury and governance", "/governance"]]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <PageHero

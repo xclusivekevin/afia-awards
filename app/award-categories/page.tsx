@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Ribbon from "@/components/Ribbon";
 import Ankara from "@/components/Ankara";
 import { TRACKS } from "@/lib/data";
@@ -20,6 +21,7 @@ export default function Categories() {
   let n = 0;
   return (
     <>
+      <Breadcrumbs trail={[["Award categories", "/award-categories"]]} />
       <PageHero title="Award Categories" sub="Four tracks, from the kitchen to the food system. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
       <section className="dark section relative overflow-hidden">
         <Ankara side="left" />

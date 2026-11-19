@@ -106,3 +106,46 @@ it updates itself when the nominees do.
 - The wall must work with no JavaScript and under `prefers-reduced-motion`: it simply stops
   drifting.
 - Fills the frame at 375 as well as 1440. The v2 hero did not.
+
+---
+
+# v4, 19 November: footer, menu, and the white sections
+
+## The problem
+An independent reviewer counted the site's signature card on 3 pages of 14, found four home
+sections and the whole footer still on the previous build's white, and found the ankara band
+hidden below 1024px. Half-converted reads as two sites.
+
+## Captures
+
+| Capture | What is taken |
+|---|---|
+| `height/awwwards-palomino` `sections/10.jpg` | **The footer.** Four small label columns across the top, then a giant wordmark bleeding edge to edge with imagery showing through it. Opened and looked at. |
+| `height/video-paragon` `live/frame_00.jpg` | the same type-as-window idea, already used in the hero, now closing the page so the site opens and shuts on the same device |
+
+## Footer: "The last word"
+Four columns (The awards / Nominees and jury / African Food Network / Talk to us), then
+**AFIA** set enormous and filled with the nominee wall, bleeding off both edges. The page
+opens on the faces and closes on them.
+
+## Menu
+The header was a plain transparent bar with a gold underline. It now carries the campaign:
+a warm smoked panel that only appears once you scroll, ankara-cream hairline beneath it, the
+ribbon orange marking the live page, and a full-bleed dark overlay on phone with the awards
+numbered down it.
+
+## Components
+
+| Component (source idea) | Section |
+|---|---|
+| **React Bits "Gradient Text" / "Shiny Text"** | the giant AFIA wordmark filled with the nominee wall |
+| **React Bits "Dock" hover lift** | the social row in the footer |
+| **Aceternity "Floating Navbar"** | the header that appears on scroll rather than sitting there from the first pixel |
+| **Magic UI "Shine Border"** | the hairline under the header |
+| drawn in code | `Ankara`, the wall, the long arrow on every button |
+
+## Also in this pass
+- Every white section on the home page moves onto the warm field, so the ankara runs
+  unbroken from hero to footer.
+- Social links move from African Food Network's accounts to the awards' own.
+- Ankara shows on phone, where it was hidden entirely.

@@ -10,7 +10,7 @@ export function Eyebrow({ children, light }: { children: ReactNode; light?: bool
 export function PageHero({ eyebrow, title, sub, children, image = "/img/Active-Hero-2026.png" }: { eyebrow?: string; title: ReactNode; sub?: ReactNode; children?: ReactNode; image?: string }) {
   return (
     <section
-      className="dark relative flex min-h-[460px] items-center overflow-hidden pt-[88px] text-center"
+      className="dark relative flex min-h-[460px] items-center overflow-hidden pt-[104px] text-center"
       style={{ backgroundImage: `linear-gradient(180deg, rgba(26,16,12,0.55), rgba(7,8,10,0.86)), url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <Ankara side="left" />

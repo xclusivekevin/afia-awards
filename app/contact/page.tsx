@@ -1,11 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Form from "@/components/Form";
 export const metadata: Metadata = { title: "Contact" };
 export default function Contact() {
   return (
     <>
+      <Breadcrumbs trail={[["Contact", "/contact"]]} />
       <PageHero title="Contact AFIA" sub="For general enquiries about the African Food Influencers Awards:" />
       <section className="section"><div className="container grid gap-10 lg:grid-cols-2">
         <div><h2 className="text-[length:var(--text-h2)]">Email</h2><p className="mt-3 text-[20px]"><a href="mailto:awards@afrifoodnetwork.com" className="text-[color:var(--afia-gold-ink)] underline">awards@afrifoodnetwork.com</a></p><p className="mt-6">For partnership enquiries, visit the <Link href="/partners" className="text-[color:var(--afia-gold-ink)] underline">Partners</Link> page.</p><p className="mt-2">For press and media enquiries, visit the <Link href="/press" className="text-[color:var(--afia-gold-ink)] underline">Press and Media</Link> page.</p></div>

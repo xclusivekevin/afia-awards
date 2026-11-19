@@ -1,12 +1,14 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Form from "@/components/Form";
 export const metadata: Metadata = { title: "Partners", description: "AFIA 2026 partners and partnership opportunities." };
 const TIERS = [["PIP-Partner-Tier.png", "Principal Institutional Partner", "The highest level of partnership. One Principal Institutional Partner per edition. Prominent naming rights, opening ceremony association, full brand integration across event and digital assets, and dedicated fireside conversation slot at the awards ceremony."], ["CSP-Partner-Tier.png", "Category Support Partner", "Exclusive association with one of AFIA's 13 award categories. Category is named in partnership with the brand. Brand integration across the category's nominations, shortlist announcement, and ceremony presentation."], ["SP-Partner-Tier.png", "Supporting Partner", "Brand presence across AFIA 2026 digital assets and the ceremony, with acknowledgement in shortlist and winner communications."]];
 export default function Partners() {
   return (
     <>
+      <Breadcrumbs trail={[["Partners", "/partners"]]} />
       <PageHero title="Partners and Sponsors" />
       <section id="current-partners" className="section"><div className="container">
         <h2 className="text-center text-[length:var(--text-h2)]">AFIA 2026 Partners</h2>

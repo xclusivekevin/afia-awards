@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type Item = { label: string; href: string; children?: { label: string; href: string; external?: boolean }[] };
@@ -18,17 +18,27 @@ const Caret = () => <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
   const path = usePathname();
+
+  // The bar is invisible over the hero and only materialises once you leave it,
+  // so the first screen is the poster and nothing else (Aceternity "Floating Navbar").
+  useEffect(() => {
+    const f = () => setStuck(window.scrollY > 90);
+    f();
+    window.addEventListener("scroll", f, { passive: true });
+    return () => window.removeEventListener("scroll", f);
+  }, []);
   const active = (h: string) => (h === "/" ? path === "/" : path.startsWith(h));
   return (
-    <header className="absolute inset-x-0 top-0 z-[50]">
+    <header className={`site-bar fixed inset-x-0 top-0 z-[50] ${stuck ? "site-bar--stuck" : ""}`}>
       <div className="container flex h-[88px] items-center justify-between">
         <Link href="/" aria-label="African Food Influencers Awards home"><Image src="/img/Awards-Logo-01.png" alt="AFIA African Food Influencers Awards" width={138} height={56} priority style={{ height: 56, width: "auto" }} /></Link>
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="display flex items-center gap-7 text-[15px] font-medium text-white">
             {NAV.map((item) => (
               <li key={item.label} className="group relative">
-                <Link href={item.href} className={`inline-flex items-center gap-1.5 border-b-2 py-3 ${active(item.href) ? "border-[color:var(--afia-gold-600)] text-[color:var(--afia-gold-600)]" : "border-transparent hover:text-[color:var(--afia-gold-500)]"}`}>{item.label}{item.children && <Caret />}</Link>
+                <Link href={item.href} className={`inline-flex items-center gap-1.5 border-b-2 py-3 ${active(item.href) ? "border-[color:var(--afia-ribbon)] text-white" : "border-transparent text-white/80 hover:text-[color:var(--afia-gold-200)]"}`}>{item.label}{item.children && <Caret />}</Link>
                 {item.children && <ul className="invisible absolute left-0 top-full min-w-[260px] rounded-md bg-black/95 p-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">{item.children.map((c) => <li key={c.label}><Link href={c.href} target={c.external ? "_blank" : undefined} className="block rounded px-3 py-2 text-[13px] normal-case tracking-normal hover:bg-white/10">{c.label}</Link></li>)}</ul>}
               </li>
             ))}
@@ -40,7 +50,7 @@ export default function Header() {
         </div>
       </div>
       {open && (
-        <div id="mobile-menu" className="fixed inset-0 z-[100] overflow-y-auto bg-black text-white">
+        <div id="mobile-menu" className="dark fixed inset-0 z-[100] overflow-y-auto text-white">
           <div className="container flex h-[88px] items-center justify-between"><Image src="/img/Awards-Logo-01.png" alt="" width={99} height={40} style={{ height: 40, width: "auto" }} /><button type="button" aria-label="Close menu" onClick={() => setOpen(false)} className="p-2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" /></svg></button></div>
           <ul className="container display space-y-2 pb-10 text-[20px]">
             {NAV.map((item) => <li key={item.label}><Link href={item.href} onClick={() => setOpen(false)} className="block py-2">{item.label}</Link>{item.children && <ul className="ml-4 space-y-1 text-[14px] normal-case tracking-normal text-white/70">{item.children.map((c) => <li key={c.label}><Link href={c.href} onClick={() => setOpen(false)} className="block py-1">{c.label}</Link></li>)}</ul>}</li>)}

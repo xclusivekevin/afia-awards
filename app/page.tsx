@@ -67,10 +67,12 @@ export default function Home() {
       </section>
 
       {/* ── What AFIA is ────────────────────────────────────────────────── */}
-      <section className="section">
+      <section className="dark section relative overflow-hidden">
+        <Ankara side="left" />
+        <Ankara side="right" />
         <div className="container grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Image src="/img/About-AFIA-2026.png" alt="Speaker at the AFIA lectern" width={800} height={600} className="img-frame" />
-          <div><h2 className="text-[length:var(--text-h2)]">What is AFIA?</h2><p className="measure mt-5">The African Food Influencers Awards is Africa&rsquo;s definitive recognition platform for excellence in food, culinary arts, and food industry leadership.</p><p className="mt-4">Organised annually by African Food Network, AFIA honours the individuals and brands making a measurable, lasting contribution to Africa&rsquo;s food ecosystem, across culinary arts, entrepreneurship, media storytelling, and cultural preservation.</p><p className="mt-4">The awards are built on three principles that do not change: impact over popularity, an independent jury, and zero pay-to-play.</p><h3 className="mt-6 text-[18px] text-[color:var(--afia-gold-ink)]">AFIA 2026</h3><p className="mt-2">The {AFIA.edition.toLowerCase()} is decided by an independent jury scoring every nominee on impact, excellence and contribution to African food. There is no public vote.</p><div className="mt-6"><Btn href="/governance" variant="outline-light">How winners are chosen</Btn></div></div>
+          <div><h2 className="poster !text-[clamp(28px,3.4vw,46px)]">What is AFIA?</h2><p className="measure mt-5 text-white/80">The African Food Influencers Awards is Africa&rsquo;s definitive recognition platform for excellence in food, culinary arts, and food industry leadership.</p><p className="mt-4 text-white/75">Organised annually by African Food Network, AFIA honours the individuals and brands making a measurable, lasting contribution to Africa&rsquo;s food ecosystem, across culinary arts, entrepreneurship, media storytelling, and cultural preservation.</p><p className="mt-4 text-white/75">The awards are built on three principles that do not change: impact over popularity, an independent jury, and zero pay-to-play.</p><h3 className="mt-6 text-[18px] text-[color:var(--afia-gold-200)]">AFIA 2026</h3><p className="mt-2 text-white/75">The {AFIA.edition.toLowerCase()} is decided by an independent jury scoring every nominee on impact, excellence and contribution to African food. There is no public vote.</p><div className="mt-6"><Btn href="/governance" variant="outline">How winners are chosen</Btn></div></div>
         </div>
       </section>
 
@@ -87,12 +89,14 @@ export default function Home() {
       </section>
 
       {/* ── The nominees: six rows, then the door to all 66 ─────────────── */}
-      <section className="section">
+      <section className="dark section relative overflow-hidden">
+        <Ankara side="left" />
+        <Ankara side="right" />
         <div className="container">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <h2 className="text-[length:var(--text-h1)]">The 2026 nominees</h2>
-              <p className="measure mt-4">Announced on {AFIA.nomineesAnnounced}, from across the continent and the diaspora. A few of them, one from each of six awards.</p>
+              <h2 className="poster !text-[clamp(30px,4vw,56px)]">The 2026 nominees</h2>
+              <p className="measure mt-4 text-white/75">Announced on {AFIA.nomineesAnnounced}, from across the continent and the diaspora. A few of them, one from each of six awards.</p>
             </div>
             <Btn href="/nominees">See who is nominated</Btn>
           </div>
@@ -100,7 +104,7 @@ export default function Home() {
             {TASTER.map((n, i) => (
               <li key={n.name} className="reveal w-[calc(50%-1rem)] max-w-[260px] md:w-[calc(33.333%-1.34rem)]">
                 <TapedCard name={n.name} photo={n.photo} brand={n.brand} caption={n.country} i={i} />
-                <p className="mt-3 text-center text-[12px] uppercase tracking-[0.08em] text-[color:var(--afia-gold-400)]">
+                <p className="mt-3 text-center text-[12px] uppercase tracking-[0.08em] text-[color:var(--afia-gold-200)]">
                   {n.category}
                 </p>
               </li>
@@ -120,12 +124,14 @@ export default function Home() {
       </section>
 
       {/* ── Watch ───────────────────────────────────────────────────────── */}
-      <section className="section text-center">
+      <section className="dark section relative overflow-hidden text-center">
+        <Ankara side="left" />
+        <Ankara side="right" />
         <div className="container">
-          <h2 className="text-[length:var(--text-h1)]">Watch the winners being read</h2>
-          <p className="measure mx-auto mt-5">{AFIA.watchHow}</p>
-          <p className="display mt-6 text-[15px] text-[color:var(--afia-gold-ink)]">{AFIA.timeZones}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-5"><Btn href="/2026-awards">How to watch</Btn><Btn href="/partners" variant="outline-light">Partner with AFIA</Btn></div>
+          <h2 className="poster mx-auto !text-[clamp(30px,4vw,56px)]">Watch the winners being read</h2>
+          <p className="measure mx-auto mt-5 text-white/80">{AFIA.watchHow}</p>
+          <p className="display mt-6 text-[15px] text-[color:var(--afia-gold-200)]">{AFIA.timeZones}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-5"><Btn href="/2026-awards">How to watch</Btn><Btn href="/partners" variant="outline">Partner with AFIA</Btn></div>
         </div>
       </section>
 

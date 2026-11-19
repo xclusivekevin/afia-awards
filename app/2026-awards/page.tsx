@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Btn } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import Ribbon from "@/components/Ribbon";
 import { AFIA } from "@/lib/event";
 import { TRACKS } from "@/lib/data";
@@ -23,6 +24,7 @@ const TIMELINE: [string, string, boolean][] = [
 export default function Awards2026() {
   return (
     <>
+      <Breadcrumbs trail={[["AFIA 2026", "/2026-awards"]]} />
       <PageHero
         eyebrow={`${AFIA.edition} · ${AFIA.dateLong}`}
         title={<>Africa and the<br />future of food.</>}

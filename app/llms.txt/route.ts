@@ -29,6 +29,7 @@ export function GET() {
 Site: ${AFIA.url}
 Organiser: ${AFIA.organiser} (${AFIA.organiserUrl})
 Contact: ${AFIA.email}
+Social: instagram.com/afrifoodawards · tiktok.com/@afrifoodawards · x.com/afrifoodawards
 
 ## AFIA 2026 at a glance
 

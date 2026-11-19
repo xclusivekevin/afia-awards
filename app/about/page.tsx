@@ -1,10 +1,12 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
+import Breadcrumbs from "@/components/Breadcrumbs";
 export const metadata: Metadata = { title: "About", description: "The African Food Influencers Awards is Africa's definitive recognition platform for excellence in food, culinary arts, and food industry leadership." };
 export default function About() {
   return (
     <>
+      <Breadcrumbs trail={[["About", "/about"]]} />
       <PageHero title="About the African Food Influencers Awards" />
       <section className="section"><div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <Image src="/img/About-AFIA.png" alt="AFIA ceremony" width={800} height={1000} className="img-frame self-start" />
