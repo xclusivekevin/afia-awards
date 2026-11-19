@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export default function TypedDate({ text, className = "" }: { text: string; className?: string }) {
   const [shown, setShown] = useState(text);
+  const [typing, setTyping] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -25,11 +26,13 @@ export default function TypedDate({ text, className = "" }: { text: string; clas
       if (!e.isIntersecting) return;
       io.disconnect();
       let i = 0;
+      setTyping(true);
       setShown("");
       const step = () => {
         i += 1;
         setShown(text.slice(0, i));
         if (i < text.length) timer = window.setTimeout(step, 38);
+        else setTyping(false);
       };
       timer = window.setTimeout(step, 180);
     }, { threshold: 0.4 });
@@ -38,6 +41,12 @@ export default function TypedDate({ text, className = "" }: { text: string; clas
     return () => { io.disconnect(); if (timer) clearTimeout(timer); };
   }, [text]);
 
+  // While typing, the visible half is hidden from assistive tech and the full string is
+  // exposed once in an sr-only span. The moment typing finishes, or if it never starts,
+  // there is a SINGLE span holding the full text: no duplicate for a crawler or a copy-paste.
+  if (!typing) {
+    return <span ref={ref} className={className}>{text}</span>;
+  }
   return (
     <span ref={ref} className={className}>
       <span aria-hidden>{shown}</span>

@@ -62,7 +62,7 @@ export default function NomineeIndex() {
         <p className="display text-[12px] uppercase tracking-[0.14em] text-[color:var(--afia-gold-200)]">
           The fourteen awards
         </p>
-        <ol ref={railRef} className="rail mt-4 lg:max-h-[64vh] lg:overflow-y-auto">
+        <ol ref={railRef} className="rail mt-4">
           {CATEGORIES_2026.map((c) => {
             const id = slug(c.name);
             const on = active === id;
@@ -71,7 +71,7 @@ export default function NomineeIndex() {
             return (
               <li key={id} data-for={id}>
                 {newTrack && (
-                  <p className="mt-5 pb-1 text-[11px] uppercase tracking-[0.12em] text-white/60 first:mt-0">
+                  <p className="mt-4 pb-0.5 text-[11px] uppercase tracking-[0.12em] text-white/60 first:mt-0">
                     {TRACK_NAME[c.track]}
                   </p>
                 )}
