@@ -61,7 +61,7 @@ export default function NomineeIndex() {
       {/* ── the rail. Aceternity "Tracing Beam", rebuilt: the beam marks the live award ── */}
       <nav aria-label="Award categories" className="lg:sticky lg:top-[104px] lg:self-start">
         <p className="display text-[12px] uppercase tracking-[0.14em] text-[color:var(--afia-gold-200)]">
-          The fourteen awards
+          The awards
         </p>
         <ol className="rail mt-4">
           {CATEGORIES_2026.map((c) => {
@@ -111,7 +111,8 @@ export default function NomineeIndex() {
                 {String(c.n).padStart(2, "0")} · {TRACK_NAME[c.track]}
               </p>
               <h2 className="poster mt-3">{c.name}</h2>
-              <div className="mt-5"><Ribbon>{c.nominees.length} nominees</Ribbon></div>
+              {/* the posts say exactly this word, and a count would be a counted headline */}
+              <div className="mt-5"><Ribbon>Nominees</Ribbon></div>
               <p className="mt-6 max-w-[54ch] text-[16px] leading-relaxed text-white/75">{c.line}</p>
 
               {/* flex, not grid: categories hold 4, 5 or 6 nominees and a 3-column grid leaves

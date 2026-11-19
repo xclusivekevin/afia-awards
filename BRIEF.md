@@ -53,3 +53,56 @@ Each is rebuilt in this site's own code. No library code ships.
 - Every nominee name and country exactly as Joy's approved list spells it.
 - Images: 57 of 66 nominees now have a real photograph. The nine without keep the marked
   placeholder, and it must still read as deliberate at card size.
+
+
+---
+
+# v3, 19 November: the hero (Kevin scored v2 6/10)
+
+## What was wrong with the v2 hero
+Five lines of type in the left 60% of the screen, 40% empty brown beside a trophy, and a
+headline that said what the awards are called rather than showing what they are. It filled
+no frame and it used none of what AFIA actually has.
+
+## The captures this hero is rebuilt from
+
+Opened and looked at, 19 November.
+
+| Capture | What is taken |
+|---|---|
+| `height/video-paragon` `live/frame_00.jpg` | **Type as a window.** The wordmark is cut out of the film; the footage plays through the letters and continues full-bleed below the cut line. |
+| `height/awwwards-champions-for-good` `sections/01.jpg` | **Edge-to-edge display scale with tiny connector words** tucked into the gaps ("YOUR", "OF"), so the headline fills the frame instead of sitting in a column. |
+
+## The idea: The Wall of 67
+
+AFIA has one thing no other awards site has: **sixty-seven faces**. The hero headline is cut
+out of a slowly drifting mosaic of every single nominee. The letters are the window. Below
+the cut line the same wall continues full-bleed and fades into the field.
+
+It is the substance of the awards used as the material of the page, it fills the frame at
+every width, and it is drawn in code from a mosaic generated out of the nominee folder, so
+it updates itself when the nominees do.
+
+## Three directions, checked against the Design Register
+
+| | Direction | Verdict |
+|---|---|---|
+| A | **The Wall of 67.** Headline knocked out of a drifting mosaic of every nominee. | **Chosen.** Nothing in the register uses type as a window onto imagery. It is the only one that uses AFIA's own substance. |
+| B | **The Envelope.** A giant gold envelope opens on scroll to reveal the date. | Rejected: one gag, seen once, and it delays the facts. |
+| C | **The Countdown Slab.** Champions-scale type with the countdown as the hero object. | Rejected: the countdown already lives lower, and a number band is the ladder's named mediocre tell. |
+
+## Components
+
+| Component (source idea) | Section |
+|---|---|
+| **React Bits "Image Trail" / Paragon window** | the mosaic behind the knocked-out headline |
+| **Aceternity "Spotlight"** | the glow, at a second depth |
+| **Magic UI "Number Ticker"** | the countdown |
+| drawn in code | `Ankara`, the generated `nominee-wall.webp` mosaic |
+
+## Rules
+- The headline must be real text, selectable and readable by a crawler. The mosaic is a
+  background fill, never an image of words.
+- The wall must work with no JavaScript and under `prefers-reduced-motion`: it simply stops
+  drifting.
+- Fills the frame at 375 as well as 1440. The v2 hero did not.

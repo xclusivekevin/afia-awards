@@ -1,15 +1,14 @@
 import Image from "next/image";
-import { Btn, Eyebrow, WINNERS_HOME } from "@/components/ui";
+import { Btn, WINNERS_HOME } from "@/components/ui";
 import Form from "@/components/Form";
 import Countdown from "@/components/Countdown";
 import TapedCard from "@/components/TapedCard";
 import Ribbon from "@/components/Ribbon";
 import Ankara from "@/components/Ankara";
 import TypedDate from "@/components/TypedDate";
-import Trophy from "@/components/Trophy";
 import { AFIA } from "@/lib/event";
 import { TRACKS } from "@/lib/data";
-import { CATEGORIES_2026, TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
+import { CATEGORIES_2026 } from "@/lib/nominees";
 
 function TrackIcon({ k }: { k: string }) {
   const p = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, width: 22, height: 22, viewBox: "0 0 24 24" };
@@ -26,45 +25,45 @@ const TASTER = [1, 4, 5, 8, 12, 14].map((n) => {
 export default function Home() {
   return (
     <>
-      {/* ── Hero: AFN's own poster, unrolled ───────────────────────────── */}
-      <section className="dark hero relative flex min-h-[760px] items-center overflow-hidden pt-[88px]" >
+      {/* ── Hero: "The Wall of 67".
+             Type as a window onto a drifting mosaic of every nominee, from
+             height/video-paragon. Edge-to-edge display scale with small connector
+             words, from height/awwwards-champions-for-good. ──────────────── */}
+      <section className="dark hero relative flex min-h-[86svh] flex-col justify-center overflow-hidden pt-[96px] pb-14">
         <Ankara side="left" />
         <Ankara side="right" />
         <div className="hero__glow" aria-hidden />
-        <div className="container grid items-center gap-10 py-20 lg:grid-cols-[1.35fr_0.65fr]">
-          <div>
-            <Eyebrow>{AFIA.phaseLine} · {TOTAL_NOMINEES} nominees</Eyebrow>
-            <h1 className="poster poster--hero mt-6">
-              Honouring excellence.<br />Building Africa&apos;s food future.
-            </h1>
-            <div className="mt-7"><Ribbon>{AFIA.edition}</Ribbon></div>
-            <p className="display mt-7 text-[18px] font-medium text-white md:text-[24px]">
-              <TypedDate text={`${AFIA.dateLong} · ${AFIA.time}`} /> · Online
-            </p>
-            <p className="lede mt-4 max-w-[52ch] text-white/85">
-              {TOTAL_NOMINEES} nominees from {TOTAL_COUNTRIES} countries. {AFIA.awards} awards.
-              Decided by an independent jury, with no public vote.
-            </p>
-            <Countdown to={AFIA.startISO} passed="The AFIA 2026 winners are in." />
-            <div className="mt-9 flex flex-wrap gap-5">
-              <Btn href="/nominees">See the nominees</Btn>
-              <Btn href="/2026-awards" variant="outline">How to watch</Btn>
-            </div>
-          </div>
-          <Trophy className="mx-auto hidden w-[210px] lg:block" />
-        </div>
-      </section>
 
-      {/* ── The slate, in numbers, straight under the hero ──────────────── */}
-      <section className="dark border-y border-[color:var(--color-card-border)] py-10">
-        <div className="container grid grid-cols-2 gap-8 text-center md:grid-cols-4">
-          {([[String(TOTAL_NOMINEES), "Nominees"], [String(AFIA.awards), "Awards"], [String(TOTAL_COUNTRIES), "Countries represented"], [String(AFIA.tracks), "Tracks"]] as [string, string][]).map(([v, l]) => (
-            <div key={l}>
-              <p className="display text-[36px] font-semibold leading-none text-[color:var(--afia-gold-500)] md:text-[44px]">{v}</p>
-              <p className="display mt-2 text-[12px] uppercase tracking-[0.1em] text-white/60">{l}</p>
-            </div>
-          ))}
+        <div className="container relative z-[2] py-8">
+          <h1 className="wall-type">
+            <span className="wall-type__small">The people who moved</span>
+            <span className="wall-type__big wall-type__big--wide">African food</span>
+            <span className="wall-type__small">this year</span>
+          </h1>
+
+          <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-4">
+            <Ribbon>Nominees</Ribbon>
+            <p className="display text-[17px] font-medium text-white md:text-[21px]">
+              <TypedDate text={`${AFIA.dateLong} · ${AFIA.time} · Online`} />
+            </p>
+          </div>
+
+          <p className="lede mt-4 max-w-[62ch] text-white/80">
+            The {AFIA.edition.toLowerCase()} of the African Food Influencers Awards.
+            Nominated by the industry, from across the continent and the diaspora, and
+            decided by an independent jury with no public vote.
+          </p>
+
+          <Countdown to={AFIA.startISO} passed="The AFIA 2026 winners are in." align="start" />
+
+          <div className="mt-7 flex flex-wrap gap-5">
+            <Btn href="/nominees">Meet the nominees</Btn>
+            <Btn href="/2026-awards" variant="outline">Watch it live</Btn>
+          </div>
         </div>
+
+        {/* the wall continues below the cut line and fades out, as Paragon does */}
+        <div className="wall-bleed" aria-hidden />
       </section>
 
       {/* ── What AFIA is ────────────────────────────────────────────────── */}
@@ -79,11 +78,11 @@ export default function Home() {
       <section className="dark section relative text-center" style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url(/img/Active-2026-Hero.png)", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="container">
           <h2 className="display gold text-[22px] font-semibold md:text-[32px]">AFIA 2026: The Awards</h2>
-          <p className="display mt-6 text-[36px] font-bold leading-[1.1] text-white md:text-[56px]">Fourteen awards.<br />Four tracks.<br /><span className="gold">One independent jury.</span></p>
+          <p className="display mt-6 text-[36px] font-bold leading-[1.1] text-white md:text-[56px]">Nominated by the industry.<br />Judged on impact.<br /><span className="gold">Never bought.</span></p>
           <p className="display mt-6 text-[16px] text-white md:text-[22px]">Winners announced {AFIA.dateLong}</p>
           <p className="lede mx-auto mt-4 max-w-3xl text-white/85">Nominated by the industry, judged on impact rather than popularity. Open to individuals and brands from across the African continent and the African diaspora. Nomination is free, and winning cannot be bought.</p>
           <div className="mt-10 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">{TRACKS.map((t) => <div key={t.key} className="card-dark reveal"><TrackIcon k={t.key} /><h3 className="mt-6 flex min-h-[3rem] items-start text-[18px] leading-[1.25] text-white">{t.name}</h3><p className="mt-2 text-[14px] text-white/85">{t.blurb}</p></div>)}</div>
-          <div className="mt-10"><Btn href="/award-categories">View all fourteen categories</Btn></div>
+          <div className="mt-10"><Btn href="/award-categories">Every award, explained</Btn></div>
         </div>
       </section>
 
@@ -93,9 +92,9 @@ export default function Home() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <h2 className="text-[length:var(--text-h1)]">The 2026 nominees</h2>
-              <p className="measure mt-4">{TOTAL_NOMINEES} names across {TOTAL_COUNTRIES} countries, announced on {AFIA.nomineesAnnounced}. Six of them, one from six different awards.</p>
+              <p className="measure mt-4">Announced on {AFIA.nomineesAnnounced}, from across the continent and the diaspora. A few of them, one from each of six awards.</p>
             </div>
-            <Btn href="/nominees">All {TOTAL_NOMINEES} nominees</Btn>
+            <Btn href="/nominees">See who is nominated</Btn>
           </div>
           <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-12">
             {TASTER.map((n, i) => (
@@ -113,7 +112,6 @@ export default function Home() {
       {/* ── 2025, the first class ───────────────────────────────────────── */}
       <section className="dark section text-center">
         <div className="container">
-          <Eyebrow>From the inaugural edition</Eyebrow>
           <h2 className="mt-5 text-[length:var(--text-h1)]"><span className="gold">AFIA 2025</span>: The First Class</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/85">In 2025 the African Food Influencers Awards held its inaugural edition, bringing together the first class of honourees recognised for their contribution to Africa&apos;s food ecosystem.</p>
           <div className="mt-10 grid gap-6 text-left md:grid-cols-3">{WINNERS_HOME.map(([img, n, a, c, d]) => <div key={n} className="reveal"><Image src={`/img/${img}`} alt={n} width={400} height={500} className="aspect-[4/5] w-full rounded-xl object-cover object-top" /><h3 className="mt-4 text-[18px] text-white">{n}</h3><p className="display text-[15px] font-medium normal-case tracking-normal text-[color:var(--afia-gold-500)]">{a}</p><p className="display mt-1 text-[13px] text-white/70">{c}</p><p className="mt-2 text-[14px] text-white/80">{d}</p></div>)}</div>
@@ -127,7 +125,7 @@ export default function Home() {
           <h2 className="text-[length:var(--text-h1)]">Watch the winners being read</h2>
           <p className="measure mx-auto mt-5">{AFIA.watchHow}</p>
           <p className="display mt-6 text-[15px] text-[color:var(--afia-gold-ink)]">{AFIA.timeZones}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-5"><Btn href="/2026-awards">Ceremony details</Btn><Btn href="/partners" variant="outline-light">Partner with AFIA</Btn></div>
+          <div className="mt-8 flex flex-wrap justify-center gap-5"><Btn href="/2026-awards">How to watch</Btn><Btn href="/partners" variant="outline-light">Partner with AFIA</Btn></div>
         </div>
       </section>
 

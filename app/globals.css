@@ -41,16 +41,41 @@
   .display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
   .eyebrow { display: inline-block; background: rgba(187,123,35,0.25); border: 1px solid var(--afia-gold-600); border-radius: var(--radius-pill); padding: 6px 18px; font-family: var(--font-display); font-weight: 500; font-size: 14px; color: #fff; line-height: 1.4; }
   .eyebrow--light { background: rgba(187,123,35,0.1); color: var(--afia-gold-ink); }
-  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 500; font-size: var(--text-button); text-transform: uppercase; letter-spacing: 0.02em; padding: 14px 28px; border-radius: var(--radius-button); line-height: 1; text-decoration: none; cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
-  .btn::after { content: ""; width: 18px; height: 18px; border: 1.5px solid currentColor; border-radius: 50%; background: no-repeat center / 9px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23fff' stroke-width='1.4'%3E%3Cpath d='M1 5h8M5.5 1.5L9 5l-3.5 3.5'/%3E%3C/svg%3E"); }
+  /* Buttons, v3. The old ones were a thin pill with a circled arrow, which is the
+     pattern every template ships. These are chunkier, squarer and the primary one
+     fills from the left with the campaign's ribbon orange on hover, so the action
+     reads as part of the poster rather than bolted on. */
+  .btn {
+    position: relative; display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--font-display); font-weight: 600; font-size: 15px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 17px 30px; border-radius: 2px; line-height: 1; text-decoration: none;
+    cursor: pointer; overflow: hidden; isolation: isolate;
+    transition: color 220ms ease, border-color 220ms ease, transform 220ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--afia-ribbon); transform: scaleX(0); transform-origin: left;
+    transition: transform 380ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn:hover::before { transform: scaleX(1); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn::after {
+    content: ""; width: 20px; height: 9px; flex: none;
+    background: currentColor;
+    /* a plain long arrow, drawn as a mask so it inherits the text colour */
+    -webkit-mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 9'%3E%3Cpath d='M0 4.5h18M14 1l4 3.5-4 3.5' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 9'%3E%3Cpath d='M0 4.5h18M14 1l4 3.5-4 3.5' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    transition: transform 320ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn:hover::after { transform: translateX(5px); }
   .btn--primary { background: var(--color-action); color: #fff; }
-  .btn--primary:hover { background: var(--color-action-hover); }
-  .btn--outline { background: transparent; color: #fff; border: 1px solid var(--afia-gold-600); }
-  .btn--outline:hover { background: rgba(187,123,35,0.12); }
-  .btn--outline-light { background: transparent; color: var(--afia-gold-ink); border: 1px solid var(--afia-gold-ink); }
-  .btn--outline-light::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none' stroke='%23996E26' stroke-width='1.4'%3E%3Cpath d='M1 5h8M5.5 1.5L9 5l-3.5 3.5'/%3E%3C/svg%3E"); }
-  .btn--outline-light:hover { background: rgba(187,123,35,0.08); }
-  .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .btn--primary:hover { color: #fff; }
+  .btn--outline { background: transparent; color: #fff; border: 1.5px solid rgba(239,227,206,0.55); }
+  .btn--outline:hover { color: #fff; border-color: var(--afia-ribbon); }
+  .btn--outline-light { background: transparent; color: var(--afia-gold-ink); border: 1.5px solid var(--afia-gold-ink); }
+  .btn--outline-light:hover { color: #fff; border-color: var(--afia-ribbon); }
+  .btn:focus-visible { outline: 2px solid var(--afia-gold-200); outline-offset: 3px; }
   .card-dark { background: var(--color-card); border: 1px solid var(--color-card-border); border-radius: var(--radius-card); padding: 32px 24px; }
   .card-light { background: #fff; border: 1px solid #eee; border-radius: var(--radius-card); box-shadow: var(--shadow-card-light); }
   .img-frame { border-radius: var(--radius-image); border: 1px solid rgba(204,152,61,0.4); display: block; width: 100%; height: auto; }
@@ -288,3 +313,55 @@ main .text-center p, main .text-center li, main .text-center dd, main .text-cent
     color: var(--afia-gold-200); white-space: nowrap;
   }
 }
+
+/* ── Hero: "The Wall of 67" ─────────────────────────────────────────────── */
+@layer components {
+  /* The headline is real, selectable text. The mosaic of all 67 nominees is a
+     background fill clipped to the glyphs, so the letters become a window onto
+     the people the awards are about. It is never an image of words. */
+  .wall-type { display: block; margin: 0; text-transform: uppercase; }
+  .wall-type__small {
+    display: block; font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(13px, 1.5vw, 20px); letter-spacing: 0.26em;
+    color: var(--afia-gold-200); line-height: 1.6;
+  }
+  .wall-type__big {
+    display: block; font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(96px, 16vw, 230px); line-height: 0.84; letter-spacing: -0.035em;
+    background-image: url("/img/nominee-wall.webp");
+    background-size: clamp(420px, 46vw, 760px) auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 1px rgba(239,227,206,0.22);
+    animation: wall-drift 54s linear infinite;
+    filter: contrast(1.06) saturate(1.04);
+  }
+  .wall-type__big--wide { font-size: clamp(38px, 11.4vw, 168px); letter-spacing: -0.035em; }
+  @keyframes wall-drift { to { background-position: -1800px -900px; } }
+
+  /* the same wall, continuing past the cut line and dissolving into the field */
+  .hero::after {
+    content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 46%;
+    background: linear-gradient(to top, var(--afia-field-cool) 12%, rgba(11,7,5,0.72) 48%, transparent);
+    pointer-events: none; z-index: 1;
+  }
+  .wall-bleed {
+    position: absolute; inset-inline: 0; bottom: 0; height: 34%;
+    background-image: url("/img/nominee-wall.webp");
+    background-size: clamp(420px, 46vw, 760px) auto;
+    opacity: 0.085;
+    mask-image: linear-gradient(to bottom, transparent, #000 60%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 60%, transparent);
+    animation: wall-drift 54s linear infinite;
+    pointer-events: none; z-index: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wall-type__big, .wall-bleed { animation: none; }
+}
+
+@layer components {
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--afia-ribbon);
+              box-shadow: 0 0 0 0 rgba(253,84,6,0.6); animation: live-pulse 2.4s ease-out infinite; }
+  @keyframes live-pulse { 70% { box-shadow: 0 0 0 10px rgba(253,84,6,0); } 100% { box-shadow: 0 0 0 0 rgba(253,84,6,0); } }
+}
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none } }

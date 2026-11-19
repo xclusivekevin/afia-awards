@@ -5,7 +5,7 @@ import Ankara from "@/components/Ankara";
 import { TRACKS } from "@/lib/data";
 import { CATEGORIES_2026 } from "@/lib/nominees";
 import { AFIA } from "@/lib/event";
-export const metadata: Metadata = { title: "Award Categories", description: "Fourteen AFIA awards across four tracks: Culinary Excellence, Media and Influence, Brands and Innovation, Future and Legacy. Decided by an independent jury." };
+export const metadata: Metadata = { title: "Award Categories", description: "The AFIA awards, across four tracks: Culinary Excellence, Media and Influence, Brands and Innovation, Future and Legacy. Decided by an independent jury." };
 
 function TrackIcon({ k }: { k: string }) {
   const p = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, width: 22, height: 22, viewBox: "0 0 24 24" };
@@ -20,7 +20,7 @@ export default function Categories() {
   let n = 0;
   return (
     <>
-      <PageHero title="Award Categories" sub="Fourteen awards across four tracks. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
+      <PageHero title="Award Categories" sub="Four tracks, from the kitchen to the food system. Recognised by an independent jury, nominated by the industry, and open to individuals and brands from across the African continent and the diaspora." image="/img/Active-2026-Hero.png" />
       <section className="dark section relative overflow-hidden">
         <Ankara side="left" />
         <Ankara side="right" />
@@ -30,7 +30,7 @@ export default function Categories() {
               <div className="reveal lg:sticky lg:top-[112px] lg:self-start">
                 <TrackIcon k={t.key} />
                 <h2 className="poster mt-5 !text-[clamp(28px,3.4vw,46px)]">{t.name}</h2>
-                <div className="mt-4"><Ribbon>{t.categories.length} awards</Ribbon></div>
+                <div className="mt-4"><Ribbon>The track</Ribbon></div>
                 <p className="mt-5 max-w-[34ch] text-[15px] leading-relaxed text-white/75">{t.blurb}</p>
               </div>
               {/* a track with an odd number of awards strands the last card in a

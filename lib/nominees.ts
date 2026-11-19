@@ -70,6 +70,7 @@ export const CATEGORIES_2026: Category2026[] = [
       { name: "Obakeng Mahlangu", country: "South Africa", bio: "Malum Foodie won Food Creator of the Year at the TikTok Awards Sub-Saharan Africa in December 2025, for comic videos built on township dishes.", photo: "obakeng-mahlangu.webp" },
       { name: "Raja'atu Muhammed Ibrahim", country: "Nigeria", bio: "Diary of a Northern Cook won overall Creator of the Year at the TikTok Awards Sub-Saharan Africa in December 2025, the night's top title. She brings Northern Nigerian food to a wide audience.", photo: "raja-atu-muhammed-ibrahim.webp" },
       { name: "George Tumaini", country: "Tanzania", bio: "George's Kitchen was nominated for Food Creator of the Year at the TikTok Awards Sub-Saharan Africa 2025, for cooking videos that carry Swahili culture.", photo: "george-tumaini.webp" },
+      { name: "Yordanos Solomon", country: "Ethiopia", bio: "Founder of AddAddis Foods in Addis Ababa, bringing Ethiopian food to a wider audience through his own channels.", photo: "yordanos-solomon.webp" },
     ],
   },
   {

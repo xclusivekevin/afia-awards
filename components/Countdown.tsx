@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
  * passes. It must never loop, and it must never be pointed at a date already gone. When it
  * reaches zero this switches to the `passed` message instead of sitting on 00:00:00:00.
  */
-export default function Countdown({ to, passed = "The winners are in." }: { to: string; passed?: string }) {
+export default function Countdown({ to, passed = "The winners are in.", align = "center" }: { to: string; passed?: string; align?: "center" | "start" }) {
   const [t, setT] = useState<number | null>(null);
 
   useEffect(() => {
     const f = () => setT(Math.max(0, new Date(to).getTime() - Date.now()));
     f();
-    const i = setInterval(f, 1000);
+    const i = setInterval(f, 30000);
     return () => clearInterval(i);
   }, [to]);
 
@@ -27,15 +27,12 @@ export default function Countdown({ to, passed = "The winners are in." }: { to: 
     );
   }
 
-  const d = Math.floor(t / 864e5), h = Math.floor(t / 36e5) % 24, m = Math.floor(t / 6e4) % 60, s = Math.floor(t / 1e3) % 60;
+  const d = Math.floor(t / 864e5), h = Math.floor(t / 36e5) % 24, m = Math.floor(t / 6e4) % 60;
+  const parts = [d && `${d}d`, `${String(h).padStart(2, "0")}h`, `${String(m).padStart(2, "0")}m`].filter(Boolean);
   return (
-    <div className="mt-8 flex justify-center gap-6 md:gap-10" aria-label="Countdown to the AFIA 2026 ceremony">
-      {([[d, "Days"], [h, "Hours"], [m, "Minutes"], [s, "Seconds"]] as [number, string][]).map(([v, l]) => (
-        <div key={l}>
-          <p className="display text-[36px] font-semibold leading-none text-[color:var(--afia-gold-500)] md:text-[48px]">{String(v).padStart(2, "0")}</p>
-          <p className="display mt-1 text-[12px] text-white/70">{l}</p>
-        </div>
-      ))}
-    </div>
+    <p className={`display mt-6 flex items-center gap-3 text-[15px] tracking-[0.1em] text-white/75 ${align === "start" ? "justify-start" : "justify-center"}`}>
+      <span className="live-dot" aria-hidden />
+      <span>Live in {parts.join(" ")}</span>
+    </p>
   );
 }

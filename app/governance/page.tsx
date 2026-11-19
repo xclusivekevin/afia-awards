@@ -57,7 +57,7 @@ export default function Governance() {
       {/* ── 1. The three dimensions. The heart of the page. ──────────────── */}
       <section className="section">
         <div className="container">
-          <h2 className="text-[length:var(--text-h1)]">Three questions, asked of every nominee</h2>
+          <h2 className="text-[length:var(--text-h1)]">What every juror is asked</h2>
           <p className="measure mt-5">
             Every juror scores every nominee in their categories from 1 to 10 on each of the three dimensions
             below. Nothing else counts. Follower numbers are not a dimension, and a large audience is not
@@ -66,8 +66,7 @@ export default function Governance() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {SCORING.map((s) => (
               <div key={s.n} className="reveal rounded-[16px] border border-[color:var(--color-card-border)] p-7">
-                <p className="display text-[40px] font-semibold leading-none text-[color:var(--afia-gold-ink)]">{String(s.n).padStart(2, "0")}</p>
-                <h3 className="mt-4 text-[20px] normal-case tracking-normal text-black">{s.name}</h3>
+                <h3 className="text-[20px] normal-case tracking-normal text-black">{s.name}</h3>
                 <p className="mt-3 text-[14px]">{s.what}</p>
                 <p className="mt-4 border-t border-[color:var(--afia-grey-300)] pt-4 text-[14px] italic text-[color:var(--afia-gold-ink)]">{s.q}</p>
               </div>
@@ -169,8 +168,8 @@ export default function Governance() {
             <a href={`mailto:${AFIA.email}`} className="text-[color:var(--afia-gold-ink)] underline">{AFIA.email}</a>.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Btn href="/nominees">See the 2026 nominees</Btn>
-            <Btn href="/award-categories" variant="outline-light">The fourteen awards</Btn>
+            <Btn href="/nominees">See who is nominated</Btn>
+            <Btn href="/award-categories" variant="outline-light">Every award, explained</Btn>
           </div>
         </div>
       </section>

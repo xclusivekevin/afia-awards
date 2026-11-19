@@ -29,7 +29,7 @@ export default function Awards2026() {
         sub={
           <>
             <p className="display text-white">Honouring Excellence. Building Africa&apos;s Food Future.</p>
-            <p className="mt-2">{AFIA.awards} awards · {TOTAL_NOMINEES} nominees · {TOTAL_COUNTRIES} countries · Decided by an independent jury</p>
+            <p className="mt-2">Nominated by the industry · Decided by an independent jury · Free to watch</p>
           </>
         }
       >
@@ -82,7 +82,7 @@ export default function Awards2026() {
       {/* ── The fourteen, by track ──────────────────────────────────────── */}
       <section className="dark section">
         <div className="container">
-          <div className="text-center"><h2 className="poster mx-auto !text-[clamp(30px,4vw,58px)]">The {AFIA.awards} awards</h2><div className="mt-5 flex justify-center"><Ribbon>{AFIA.tracks} tracks</Ribbon></div></div>
+          <div className="text-center"><h2 className="poster mx-auto !text-[clamp(30px,4vw,58px)]">The awards</h2><div className="mt-5 flex justify-center"><Ribbon>Four tracks</Ribbon></div></div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TRACKS.map((t) => (
               <div key={t.key} className="card-dark">
@@ -109,7 +109,7 @@ export default function Awards2026() {
           </div>
 
           <div className="mt-12 flex flex-wrap justify-center gap-5">
-            <Btn href="/nominees">All {CATEGORIES_2026.reduce((n, c) => n + c.nominees.length, 0)} nominees</Btn>
+            <Btn href="/nominees">See who is nominated</Btn>
             <Btn href="/award-categories" variant="outline">What each award honours</Btn>
           </div>
         </div>

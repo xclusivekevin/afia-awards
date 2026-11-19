@@ -29,7 +29,9 @@ export default function TapedCard({
             height={480}
             // a 4-nominee category renders two-up, so a card can be ~470px, not 300.
             // the old sizes made Next serve a 320w file into a 470px box (0.67x).
-            sizes="(max-width: 640px) 46vw, (max-width: 1024px) 40vw, 360px"
+            // phone is one-up now, so a card is ~92vw there, not 46vw. The old hint made
+            // Next serve a 192w file into a 327px box (0.55x).
+            sizes="(max-width: 767px) 92vw, (max-width: 1024px) 46vw, 360px"
             priority={priority}
             className={brand ? "taped-card__logo" : "taped-card__face"}
           />
