@@ -31,10 +31,10 @@ export default function TypedDate({ text, className = "" }: { text: string; clas
       const step = () => {
         i += 1;
         setShown(text.slice(0, i));
-        if (i < text.length) timer = window.setTimeout(step, 38);
+        if (i < text.length) timer = window.setTimeout(step, 23);
         else setTyping(false);
       };
-      timer = window.setTimeout(step, 180);
+      timer = window.setTimeout(step, 90);
     }, { threshold: 0.4 });
     io.observe(el);
     // backstop: if the observer never fires, the full text is already there
@@ -47,11 +47,15 @@ export default function TypedDate({ text, className = "" }: { text: string; clas
   if (!typing) {
     return <span ref={ref} className={className}>{text}</span>;
   }
+  // The full string is laid out invisibly to hold the exact width, and the typed
+  // half sits over it. Without this the line grows character by character and
+  // re-wraps the row around it, which on a phone pushed the countdown down a line
+  // mid-animation.
   return (
-    <span ref={ref} className={className}>
-      <span aria-hidden>{shown}</span>
+    <span ref={ref} className={`typed ${className}`}>
+      <span className="typed__ghost" aria-hidden>{text}</span>
+      <span className="typed__live" aria-hidden>{shown}<span className="caret" /></span>
       <span className="sr-only">{text}</span>
-      <span className="caret" aria-hidden />
     </span>
   );
 }
