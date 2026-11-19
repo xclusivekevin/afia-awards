@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import TapedCard from "./TapedCard";
 import Ribbon from "./Ribbon";
 import { CATEGORIES_2026 } from "@/lib/nominees";
@@ -28,7 +28,6 @@ function slug(s: string) {
  */
 export default function NomineeIndex() {
   const [active, setActive] = useState(slug(CATEGORIES_2026[0].name));
-  const railRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     const els = CATEGORIES_2026
@@ -48,10 +47,12 @@ export default function NomineeIndex() {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => {
-    railRef.current?.querySelector<HTMLElement>(`[data-for="${active}"]`)
-      ?.scrollIntoView({ block: "nearest" });
-  }, [active]);
+  // NO scrollIntoView here, ever. scrollIntoView walks EVERY scrollable ancestor,
+  // including the document, so a scrollspy that calls it drags the reader back up
+  // the page each time the active section changes. Measured on the live site:
+  // 7,200px of wheel input moved the page 1,812px, with five backward jumps, and
+  // categories 3 to 14 could not be reached. The rail now shows all fourteen items
+  // without scrolling, so there is nothing to bring into view.
 
   let lastTrack = "";
 
@@ -62,7 +63,7 @@ export default function NomineeIndex() {
         <p className="display text-[12px] uppercase tracking-[0.14em] text-[color:var(--afia-gold-200)]">
           The fourteen awards
         </p>
-        <ol ref={railRef} className="rail mt-4">
+        <ol className="rail mt-4">
           {CATEGORIES_2026.map((c) => {
             const id = slug(c.name);
             const on = active === id;
