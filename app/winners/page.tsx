@@ -5,12 +5,14 @@ import Door from "@/components/Door";
 import Ankara from "@/components/Ankara";
 import { AFIA } from "@/lib/event";
 import { WINNERS_2025 } from "@/lib/data";
+import { WinnersSchema } from "@/components/StructuredData";
 
 export const metadata: Metadata = { title: "Winners Archive", description: "A permanent record of every AFIA honouree, edition by edition." };
 
 export default function Winners() {
   return (
     <>
+      <WinnersSchema year={2025} url="https://awards.afrifoodnetwork.com/winners" />
       <Breadcrumbs trail={[["Winners archive", "/winners"]]} />
       <PageHero
         title="The winners archive"

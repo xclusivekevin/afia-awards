@@ -1,5 +1,6 @@
 import { AFIA } from "@/lib/event";
 import { TOTAL_NOMINEES, TOTAL_COUNTRIES } from "@/lib/nominees";
+import { WINNERS_2025 } from "@/lib/data";
 
 /**
  * Organization + WebSite + Event JSON-LD, on every page.
@@ -45,5 +46,35 @@ export default function StructuredData() {
       superEvent: { "@type": "EventSeries", name: "African Food Influencers Awards", url: SITE },
     },
   ];
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
+/**
+ * The 2025 winners as an ItemList.
+ *
+ * "Who won AFIA 2025?" is the question an answer engine is most likely to be
+ * asked about this site, and until now the answer existed only as prose inside
+ * cards. This states it as data, with each honouree's award beside their name.
+ */
+export function WinnersSchema({ year, url }: { year: number; url: string }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `African Food Influencers Awards ${year} winners`,
+    description: `Every honouree of the African Food Influencers Awards ${year}, with the award each one received.`,
+    url,
+    numberOfItems: WINNERS_2025.length,
+    itemListOrder: "https://schema.org/ItemListUnordered",
+    itemListElement: WINNERS_2025.map((w, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": w.kind === "brand" ? "Organization" : "Person",
+        name: w.name,
+        description: w.bio,
+        award: `${w.category}, African Food Influencers Awards ${year}`,
+      },
+    })),
+  };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }

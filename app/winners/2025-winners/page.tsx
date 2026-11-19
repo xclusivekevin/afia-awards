@@ -2,12 +2,14 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
 import { WINNERS_2025 } from "@/lib/data";
+import { WinnersSchema } from "@/components/StructuredData";
 /* ASSET GAP: nur.png, Zoe-Adjonyoh.jpg and Beke-Igwe.jpeg are 222-300px source files
    displayed at 345px. AFN needs higher-resolution originals; quality is raised meanwhile. */
 export const metadata: Metadata = { title: "AFIA 2025 Winners" };
 export default function Winners2025() {
   return (
     <>
+      <WinnersSchema year={2025} url="https://awards.afrifoodnetwork.com/winners/2025-winners" />
       <PageHero title="AFIA Winners" sub="The inaugural class, 2025" image="/img/Active-2026-Hero.png" />
       <section className="dark section">
         <div className="container win-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">{WINNERS_2025.map((w) => (
